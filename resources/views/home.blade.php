@@ -39,6 +39,37 @@
        <h1> Welcome, {{ Auth::user()->name }}</h1>
     </div>
 
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Transaksi</th>
+                    <th>Tanggal</th>
+                    <th>Barang</th>
+                    <th>Kategori</th>
+                    <th>Harga Barang</th>
+                    <th>Jumlah Barang</th>
+                    <th>Harga Barang Transaksi</th>
+                    <th>Total Harga Transaksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($data as $row)
+                    <tr>
+                        <td>{{ $row->id_transaksi }}</td>
+                        <td>{{ $row->tanggal }}</td>
+                        <td>{{ $row->barang }}</td>
+                        <td>{{ $row->kategori }}</td>
+                        <td>{{ $row->harga_barang }}</td>
+                        <td>{{ $row->jumlah_barang }}</td>
+                        <td>{{ $row->harga_barang_transaksi }}</td>
+                        <td>{{ $row->total_transaksi }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
 </body>
 
 </html>
