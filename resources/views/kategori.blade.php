@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-primary bg-light sticky-top">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand" href="/home">Toko Aneka ATK</a>
+            <a class="navbar-brand" href="\home">Toko Aneka ATK</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,13 +24,13 @@
             <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
-                    <a class="nav-item nav-link" href="/transaksi">Transaksi</a>
+                    <a class="nav-item nav-link" href="\transaksi">Transaksi</a>
                     <!-- Detail Transaksi -->
-                    <a class="nav-item nav-link" href="/detail_transaksi">Detail Transaksi</a>                         
+                    <a class="nav-item nav-link" href="\detail_transaksi">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link" href="/barang">Barang</a>                    
+                    <a class="nav-item nav-link" href="\barang">Barang</a>                    
                     <!-- Kategori -->
-                    <a class="nav-item nav-link" href="/kategori">Kategori</a>
+                    <a class="nav-item nav-link active" href="\kategori'">Kategori</a>
                 </div>
                 <!-- Logout -->
                 <form action="{{ route('logout') }}" method="POST" class="ml-2" role="search">
@@ -42,46 +42,25 @@
         </div>
     </nav>
 
-
-    <!-- Main -->
-    <div class="container">
-       <h1> Welcome, {{ Auth::user()->name }}</h1>
-    </div>
-
     <!-- Main Table -->
     <div class="container">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID Transaksi</th>
-                    <th>Tanggal</th>
-                    <th>Barang</th>
-                    <th>Kategori</th>
-                    <th>Harga Barang</th>
-                    <th>Jumlah Barang</th>
-                    <th>Harga Barang Transaksi</th>
-                    <th>Total Harga Transaksi</th>
+                    <th>ID Kategori</th>
+                    <th>Nama Kategori</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $row)
                     <tr>
-                        <td>{{ $row->id_transaksi }}</td>
-                        <td>{{ $row->tanggal }}</td>
-                        <td>{{ $row->barang }}</td>
-                        <td>{{ $row->kategori }}</td>
-                        <td>{{ $row->harga_barang }}</td>
-                        <td>{{ $row->jumlah_barang }}</td>
-                        <td>{{ $row->harga_barang_transaksi }}</td>
-                        <td>{{ $row->total_transaksi }}</td>
+                        <td>{{ $row->id_kategori }}</td>
+                        <td>{{ $row->nama_kategori }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
-    <!-- Pagination -->
-    <!-- CRUD -->
 
 </body>
 

@@ -8,8 +8,9 @@ use App\Models\DetailTransaksi;
 class DetailTransaksiController extends Controller
 {
     //
-    function show(){
+    function index(){
         $data = DetailTransaksi::all();
-        return view('detailtransaksi', ['detailtransaksi' => $data]);
+        return view('detail_transaksi', compact('data'));
+        //return $data;
     }
 }

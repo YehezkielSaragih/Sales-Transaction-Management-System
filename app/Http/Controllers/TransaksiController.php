@@ -8,8 +8,9 @@ use App\Models\Transaksi;
 class TransaksiController extends Controller
 {
     //
-    function show(){
+    function index(){
         $data = Transaksi::all();
-        return view('transaksi', ['transaksi' => $data]);
+        return view('transaksi', compact('data'));
+        // return $data;
     }
 }

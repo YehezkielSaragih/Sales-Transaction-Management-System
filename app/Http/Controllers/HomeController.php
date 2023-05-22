@@ -11,7 +11,7 @@ use App\Models\Transaksi;
 class HomeController extends Controller
 {
     //
-    public function index()
+    function index()
     {
         $data = Transaksi::join('detail_transaksi', 'transaksi.id_transaksi', '=', 'detail_transaksi.id_transaksi')
             ->join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
@@ -30,5 +30,6 @@ class HomeController extends Controller
             ->get();
 
         return view('home', compact('data'));
+        // return $data;
     }
 }

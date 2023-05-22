@@ -45,6 +45,10 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+    Route::get('/detail_transaksi', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
+    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });

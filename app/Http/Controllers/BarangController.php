@@ -8,8 +8,9 @@ use App\Models\Barang;
 class BarangController extends Controller
 {
     //
-    function show(){
+    function index(){
         $data = Barang::all();
-        return view('barang', ['barang' => $data]);
+        return view('barang', compact('data'));
+        // return $data;
     }
 }

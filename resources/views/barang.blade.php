@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-primary bg-light sticky-top">
         <div class="container">
@@ -28,7 +28,7 @@
                     <!-- Detail Transaksi -->
                     <a class="nav-item nav-link" href="/detail_transaksi">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link" href="/barang">Barang</a>                    
+                    <a class="nav-item nav-link active" href="/barang">Barang</a>                    
                     <!-- Kategori -->
                     <a class="nav-item nav-link" href="/kategori">Kategori</a>
                 </div>
@@ -42,46 +42,29 @@
         </div>
     </nav>
 
-
-    <!-- Main -->
-    <div class="container">
-       <h1> Welcome, {{ Auth::user()->name }}</h1>
-    </div>
-
     <!-- Main Table -->
     <div class="container">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>ID Transaksi</th>
-                    <th>Tanggal</th>
-                    <th>Barang</th>
-                    <th>Kategori</th>
+                    <th>ID Barang</th>
+                    <th>ID Kategori</th>
+                    <th>Nama Barang</th>
                     <th>Harga Barang</th>
-                    <th>Jumlah Barang</th>
-                    <th>Harga Barang Transaksi</th>
-                    <th>Total Harga Transaksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($data as $row)
                     <tr>
-                        <td>{{ $row->id_transaksi }}</td>
-                        <td>{{ $row->tanggal }}</td>
-                        <td>{{ $row->barang }}</td>
-                        <td>{{ $row->kategori }}</td>
+                        <td>{{ $row->id_barang }}</td>
+                        <td>{{ $row->id_kategori }}</td>
+                        <td>{{ $row->nama_barang }}</td>
                         <td>{{ $row->harga_barang }}</td>
-                        <td>{{ $row->jumlah_barang }}</td>
-                        <td>{{ $row->harga_barang_transaksi }}</td>
-                        <td>{{ $row->total_transaksi }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
-    <!-- Pagination -->
-    <!-- CRUD -->
 
 </body>
 

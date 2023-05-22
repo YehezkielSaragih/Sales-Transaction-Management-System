@@ -8,8 +8,9 @@ use App\Models\Kategori;
 class KategoriController extends Controller
 {
     //
-    function show(){
+    function index(){
         $data = Kategori::all();
-        return view('kategori', ['data' => $data]);
+        return view('kategori', compact('data'));
+        // return $data;
     }
 }
