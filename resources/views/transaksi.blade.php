@@ -63,7 +63,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $data->links() }}
+        <div class="d-flex justify-content-center">{{ $data->links() }}</div>
     </div>
 
     <!-- Script -->
