@@ -6,8 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Toko Aneka ATK - Homepage</title>
+    <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -44,11 +45,11 @@
 
     <!-- Main Table -->
     <div class="container">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" id="barang-table">
             <thead>
                 <tr>
                     <th>ID Barang</th>
-                    <th>ID Kategori</th>
+                    <th>Nama Kategori</th>
                     <th>Nama Barang</th>
                     <th>Harga Barang</th>
                 </tr>
@@ -56,15 +57,39 @@
             <tbody>
                 @foreach($data as $row)
                     <tr>
-                        <td>{{ $row->id_barang }}</td>
-                        <td>{{ $row->id_kategori }}</td>
-                        <td>{{ $row->nama_barang }}</td>
-                        <td>{{ $row->harga_barang }}</td>
+                        <td>{{ $row['id_barang'] }}</td>
+                        <td>{{ $row['id_kategori'] }}</td>
+                        <td>{{ $row['nama_barang'] }}</td>
+                        <td>{{ $row['harga_barang'] }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        {{ $data->links() }}
     </div>
+
+    <!-- Form Card -->
+    <div class="container">
+        <div class="card" id="barang-card">
+            <div class="card-header">Tambah Barang</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form action="">
+                        <label>Kategori</label>
+                        <input type="text" class="form-control" placeholder="Nama Kategori">
+                        <label>Barang</label>
+                        <input type="text" class="form-control" placeholder="Nama Barang">
+                        <label>Harga Barang</label>
+                        <input type="text" class="form-control" placeholder="Harga Barang">
+                        <button class="btn btn-success">Tambah</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </body>
 

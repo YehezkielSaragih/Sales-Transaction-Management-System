@@ -27,7 +27,7 @@ class HomeController extends Controller
                 'transaksi.total_transaksi'
             )
             ->orderBy('transaksi.id_transaksi', 'asc')
-            ->get();
+            ->paginate(10);
 
         return view('home', compact('data'));
         // return $data;

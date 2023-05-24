@@ -9,7 +9,7 @@ class TransaksiController extends Controller
 {
     //
     function index(){
-        $data = Transaksi::all();
+        $data = Transaksi::paginate(10);
         return view('transaksi', compact('data'));
         // return $data;
     }

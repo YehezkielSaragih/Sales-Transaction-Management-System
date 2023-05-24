@@ -2,12 +2,57 @@
     padding: 10px;
 }
 
-/* .nav-item{
+.nav-item{
     transition: all;
     transition-duration: 300ms;
     padding: 5px;
 }
 
 .nav-item:hover{
+    border-bottom: 1px solid orangered;
     color: orangered;
-} */
+}
+
+.active{
+    color: orangered!important;
+}
+
+.form-control{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#joined-table{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#transaksi-table{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#detail_transaksi-table{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#barang-table{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#kategori-table{
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#kategori-card{
+    margin-left: auto;
+    margin-right: auto;
+}
