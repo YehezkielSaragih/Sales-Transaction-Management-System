@@ -41,18 +41,13 @@
 }
 
 #barang-table{
-    width: 50%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
 
 #kategori-table{
-    width: 25%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#kategori-card{
+    width: 35%;
     margin-left: auto;
     margin-right: auto;
 }

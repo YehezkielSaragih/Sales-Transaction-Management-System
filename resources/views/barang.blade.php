@@ -34,7 +34,7 @@
                     <a class="nav-item nav-link" href="/kategori">Kategori</a>
                 </div>
                 <!-- Logout -->
-                <form action="{{ route('logout') }}" method="POST" class="ml-2" role="search">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Logout</button>
@@ -45,32 +45,44 @@
 
     <!-- Main Table -->
     <div class="container">
-        <table class="table table-bordered table-striped" id="barang-table">
-            <thead>
-                <tr>
-                    <th>ID Barang</th>
-                    <th>Nama Kategori</th>
-                    <th>Nama Barang</th>
-                    <th>Harga Barang</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $row)
+        <div class="card">
+            <div class="card-header">Tabel Data Barang</div>
+            <table class="table table-bordered table-striped mt-3" id="barang-table">
+                <thead>
                     <tr>
-                        <td>{{ $row['id_barang'] }}</td>
-                        <td>{{ $row['id_kategori'] }}</td>
-                        <td>{{ $row['nama_barang'] }}</td>
-                        <td>{{ $row['harga_barang'] }}</td>
+                        <th>ID Barang</th>
+                        <th>Nama Kategori</th>
+                        <th>Nama Barang</th>
+                        <th>Harga Barang</th>
+                        <th>Modify</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-center">{{ $data->links() }}</div>
+                </thead>
+                <tbody>
+                    @foreach($data as $row)
+                        <tr>
+                            <td>{{ $row['id_barang'] }}</td>
+                            <td>{{ $row['id_kategori'] }}</td>
+                            <td>{{ $row['nama_barang'] }}</td>
+                            <td>{{ $row['harga_barang'] }}</td>
+                            <td class="d-flex">   
+                                <form action="" method="POST" class="me-2">
+                                    <button class="btn btn-primary">Edit</button>
+                                </form>
+                                <form action="" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">{{ $data->links() }}</div>
+        </div>
     </div>
 
     <!-- Form Card -->
     <div class="container">
-        <div class="card" id="barang-card">
+        <div class="card">
             <div class="card-header">Tambah Barang</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">

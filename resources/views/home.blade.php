@@ -34,7 +34,7 @@
                     <a class="nav-item nav-link" href="/kategori">Kategori</a>
                 </div>
                 <!-- Logout -->
-                <form action="{{ route('logout') }}" method="POST" class="ml-2" role="search">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Logout</button>

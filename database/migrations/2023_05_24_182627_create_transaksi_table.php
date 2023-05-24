@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('transaksi', function (Blueprint $table) {
+            // Column Setup
+            $table->unsignedBigInteger('id_transaksi', 8)->autoIncrement()->primary();
+            $table->date('tanggal')->nullable(false);
+            $table->unsignedBigInteger('total_transaksi', 10)->nullable(false);
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('password_reset_tokens');
+        Schema::dropIfExists('transaksi');
     }
 };

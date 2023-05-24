@@ -34,7 +34,7 @@
                     <a class="nav-item nav-link" href="\kategori">Kategori</a>
                 </div>
                 <!-- Logout -->
-                <form action="{{ route('logout') }}" method="POST" class="ml-2" role="search">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Logout</button>
@@ -45,25 +45,28 @@
 
     <!-- Main Table -->
     <div class="container">
-        <table class="table table-bordered table-striped" id="transaksi-table">
-            <thead>
-                <tr>
-                    <th>ID Transaksi</th>
-                    <th>Tanggal</th>
-                    <th>Total Transaksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $row)
+        <div class="card">
+            <div class="card-header">Tabel Data Transaksi</div>
+            <table class="table table-bordered table-striped mt-3" id="transaksi-table">
+                <thead>
                     <tr>
-                        <td>{{ $row['id_transaksi'] }}</td>
-                        <td>{{ $row['tanggal'] }}</td>
-                        <td>{{ $row['total_transaksi'] }}</td>
+                        <th>ID Transaksi</th>
+                        <th>Tanggal</th>
+                        <th>Total Transaksi</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-center">{{ $data->links() }}</div>
+                </thead>
+                <tbody>
+                    @foreach($data as $row)
+                        <tr>
+                            <td>{{ $row['id_transaksi'] }}</td>
+                            <td>{{ $row['tanggal'] }}</td>
+                            <td>{{ $row['total_transaksi'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">{{ $data->links() }}</div>
+        </div>
     </div>
 
     <!-- Script -->
