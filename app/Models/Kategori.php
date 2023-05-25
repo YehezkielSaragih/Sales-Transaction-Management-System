@@ -13,4 +13,8 @@ class Kategori extends Model
     protected $fillable = [
         'nama_kategori',
     ];
+    public function isBeingUsed(){
+        // Check if the category is being referenced in the 'barang' table
+        return Barang::where('id_kategori', $this->id_kategori)->exists();
+    }
 }

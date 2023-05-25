@@ -5,7 +5,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Toko Aneka ATK - Kategori Table</title>
     <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -50,6 +49,19 @@
             <div class="card-header">Tambah Data Kategori</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
+                    <!-- Error Message -->
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
+                    <!-- Success Message -->
+                    @if(Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                    <!-- Create function redirect back to /kategori -->
                     <form action="{{ route('kategori.create') }}" method="POST"> 
                         @csrf
                         <label>Kategori</label>
@@ -65,8 +77,6 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Kategori</div>
-            <!-- Search bar -->
-                
             <!-- Table -->
             <table class="table table-bordered table-striped mt-3" id="kategori-table">
                 <thead>                        
@@ -82,10 +92,12 @@
                             <td>{{ $row['id_kategori'] }}</td>
                             <td>{{ $row['nama_kategori'] }}</td>
                             <td class="d-flex">   
+                                <!-- Edit function redirect to /kategori/kategori_edit -->
                                 <form action="{{ route('kategori.edit', ['id' => $row['id_kategori']]) }}" method="POST" class="me-2">
                                     @csrf
                                     <button name="edit" class="btn btn-primary">Edit</button>
                                 </form>
+                                <!-- Delete function redirect back to /kategori -->
                                 <form action="{{ route('kategori.delete', $row['id_kategori']) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
