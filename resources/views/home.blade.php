@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
-                    <a class="nav-item nav-link" href="/transaksi">Transaksi</a>
+                    <a class="nav-item nav-link" href="/transaksi/transaksi_table">Transaksi</a>
                     <!-- Detail Transaksi -->
-                    <a class="nav-item nav-link" href="/detail_transaksi">Detail Transaksi</a>                         
+                    <a class="nav-item nav-link" href="/detail_transaksi/detail_transaksi_table">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link" href="/barang">Barang</a>                    
+                    <a class="nav-item nav-link" href="/barang/barang_table">Barang</a>                    
                     <!-- Kategori -->
-                    <a class="nav-item nav-link" href="/kategori">Kategori</a>
+                    <a class="nav-item nav-link" href="/kategori/kategori_table">Kategori</a>
                 </div>
                 <!-- Logout -->
                 <form action="{{ route('logout') }}" method="POST">

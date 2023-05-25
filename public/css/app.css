@@ -28,30 +28,29 @@
 
 #joined-table{
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
+}
+
+#pagination{
+    margin-left: 15px;
 }
 
 #transaksi-table{
     width: 30%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
 }
 
 #detail_transaksi-table{
     width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
 }
 
 #barang-table{
     width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
 }
 
 #kategori-table{
     width: 35%;    
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 15px;
 }

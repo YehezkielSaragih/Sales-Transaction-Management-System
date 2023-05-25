@@ -46,14 +46,14 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
-    Route::get('/detail_transaksi', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
-    Route::get('/barang', [BarangController::class, 'index'])->name('barang');
+    Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi');
+    Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
+    Route::get('/barang/barang_table', [BarangController::class, 'index'])->name('barang');
     // Kategori
-    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
-    Route::post('/kategori', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
-    Route::delete('/kategori/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
+    Route::get('/kategori/kategori_table', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori/kategori_table', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::put('/kategori/kategori_table/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategori/kategori_table/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
     // Logout
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });

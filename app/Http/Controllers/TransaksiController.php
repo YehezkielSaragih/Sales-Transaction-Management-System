@@ -10,7 +10,7 @@ class TransaksiController extends Controller
     //
     function index(){
         $data = Transaksi::paginate(10);
-        return view('transaksi', compact('data'));
+        return view('transaksi.transaksi_table', compact('data'));
         // return $data;
     }
 }

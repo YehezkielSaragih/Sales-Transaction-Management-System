@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
-                    <a class="nav-item nav-link" href="/transaksi">Transaksi</a>
+                    <a class="nav-item nav-link" href="/transaksi/transaksi_table">Transaksi</a>
                     <!-- Detail Transaksi -->
-                    <a class="nav-item nav-link" href="/detail_transaksi">Detail Transaksi</a>                         
+                    <a class="nav-item nav-link" href="/detail_transaksi/detail_transaksi_table">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link active" href="/barang">Barang</a>                    
+                    <a class="nav-item nav-link active" href="/barang/barang_table">Barang</a>                    
                     <!-- Kategori -->
-                    <a class="nav-item nav-link" href="/kategori">Kategori</a>
+                    <a class="nav-item nav-link" href="/kategori/kategori_table">Kategori</a>
                 </div>
                 <!-- Logout -->
                 <form action="{{ route('logout') }}" method="POST">
@@ -42,6 +42,26 @@
             </div>
         </div>
     </nav>
+
+    <!-- Form Card -->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Tambah Barang</div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form action="">
+                        <label>Kategori</label>
+                        <input type="text" class="form-control" placeholder="Nama Kategori">
+                        <label>Barang</label>
+                        <input type="text" class="form-control" placeholder="Nama Barang">
+                        <label>Harga Barang</label>
+                        <input type="text" class="form-control" placeholder="Harga Barang">
+                        <button class="btn btn-success">Tambah</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <!-- Main Table -->
     <div class="container">
@@ -76,27 +96,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center">{{ $data->links() }}</div>
-        </div>
-    </div>
-
-    <!-- Form Card -->
-    <div class="container">
-        <div class="card">
-            <div class="card-header">Tambah Barang</div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <form action="">
-                        <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori">
-                        <label>Barang</label>
-                        <input type="text" class="form-control" placeholder="Nama Barang">
-                        <label>Harga Barang</label>
-                        <input type="text" class="form-control" placeholder="Harga Barang">
-                        <button class="btn btn-success">Tambah</button>
-                    </form>
-                </li>
-            </ul>
+            <div id="pagination">{{ $data->links() }}</div>
         </div>
     </div>
 
