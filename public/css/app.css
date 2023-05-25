@@ -17,6 +17,10 @@
     color: orangered!important;
 }
 
+.searchbar{
+    width: 50%;
+}
+
 .form-control{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -47,7 +51,7 @@
 }
 
 #kategori-table{
-    width: 35%;
+    width: 35%;    
     margin-left: auto;
     margin-right: auto;
 }

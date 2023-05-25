@@ -49,6 +49,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
     Route::get('/detail_transaksi', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
-    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
+    // Kategori
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::delete('/kategori/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
+    // Logout
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });

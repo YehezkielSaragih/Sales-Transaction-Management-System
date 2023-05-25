@@ -10,7 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {   
+        // Fix timestamp
+        // Schema::table('detail_transaksi', function (Blueprint $table) {
+        //     $table->timestamps();
+        // });
+        // DB::table('detail_transaksi')->update([
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+
         Schema::create('detail_transaksis', function (Blueprint $table) {
             // Column Setup
             $table->unsignedBigInteger('id_detail_transaksi', 8)->autoIncrement()->primary();
@@ -18,6 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_barang', 8)->nullable(false);
             $table->unsignedBigInteger('jumlah_barang', 10)->nullable(false);
             $table->unsignedBigInteger('harga_barang_transaksi', 10)->nullable(false);
+            $table->timestamps();
             // Table Relation
             $table->foreign('id_transaksi')->references('id_transaksi')->on('transaksi');
             $table->foreign('id_barang')->references('id_barang')->on('barang');

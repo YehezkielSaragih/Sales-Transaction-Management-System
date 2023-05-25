@@ -10,12 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {   
+        // // Fix timestamp
+        // Schema::table('transaksi', function (Blueprint $table) {
+        //     $table->timestamps();
+        // });
+        // DB::table('transaksi')->update([
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+
         Schema::create('transaksi', function (Blueprint $table) {
             // Column Setup
             $table->unsignedBigInteger('id_transaksi', 8)->autoIncrement()->primary();
             $table->date('tanggal')->nullable(false);
             $table->unsignedBigInteger('total_transaksi', 10)->nullable(false);
+            $table->timestamps();
         });
     }
 

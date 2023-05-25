@@ -47,6 +47,9 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Kategori</div>
+                <!-- Search bar -->
+                
+                <!-- Table -->
                 <table class="table table-bordered table-striped mt-3" id="kategori-table">
                     <thead>
                         <tr>
@@ -61,11 +64,13 @@
                                 <td>{{ $row['id_kategori'] }}</td>
                                 <td>{{ $row['nama_kategori'] }}</td>
                                 <td class="d-flex">   
-                                    <form action="" method="POST" class="me-2">
-                                        <button class="btn btn-primary">Edit</button>
+                                    <form action="{{ route('kategori.edit', $row['id_kategori']) }}" method="POST" class="me-2">
+                                        <button name="edit" class="btn btn-primary">Edit</button>
                                     </form>
-                                    <form action="" method="POST">
-                                        <button class="btn btn-danger">Delete</button>
+                                    <form action="{{ route('kategori.delete', $row['id_kategori']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button name="delete"class="btn btn-danger">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -82,10 +87,11 @@
             <div class="card-header">Data Kategori</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <form action="">
+                    <form action="{{ route('kategori.create') }}" method="POST"> 
+                        @csrf
                         <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori">
-                        <button class="btn btn-success">Tambah</button>
+                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori">
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </li>
             </ul>
