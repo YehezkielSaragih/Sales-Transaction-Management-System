@@ -31,26 +31,22 @@
     margin-left: 15px;
 }
 
-#pagination{
-    margin-left: 15px;
-}
-
-#transaksi-table{
+#transaksi{
     width: 30%;
     margin-left: 15px;
 }
 
-#detail_transaksi-table{
+#detail_transaksi{
     width: 60%;
     margin-left: 15px;
 }
 
-#barang-table{
+#barang{
     width: 60%;
     margin-left: 15px;
 }
 
-#kategori-table{
+#kategori{
     width: 35%;    
     margin-left: 15px;
 }

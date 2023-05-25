@@ -47,7 +47,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Detail Transaksi</div>
-            <table class="table table-bordered table-striped mt-3" id="detail_transaksi-table">
+            <table class="table table-bordered table-striped mt-3" id="detail_transaksi">
                 <thead>
                     <tr>
                         <th>ID Detail Transaksi</th>
@@ -69,7 +69,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div id="pagination">{{ $data->links() }}</div>
+            <div id="detail_transaksi">{{ $data->links() }}</div>
         </div>
     </div>
 

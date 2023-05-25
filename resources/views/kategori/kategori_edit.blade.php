@@ -67,7 +67,7 @@
         <div class="card">
             <div class="card-header">Tabel Data Kategori</div>
             <!-- Table -->
-            <table class="table table-bordered table-striped mt-3" id="kategori-table">
+            <table class="table table-bordered table-striped mt-3" id="kategori">
                 <thead>                        
                     <tr>
                         <th>ID Kategori</th>
@@ -83,7 +83,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div id="pagination">{{ $data->links() }}</div>
+            <div id="kategori">{{ $data->links() }}</div>
         </div>
     </div>
 
