@@ -47,14 +47,15 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tambah Data Kategori</div>
+            <div class="card-header">Update Data Kategori</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <form action="{{ route('kategori.create') }}" method="POST"> 
-                        @csrf
+                    <form action="{{ route('kategori.update', ['id' => $editId]) }}" method="POST">
+                        @csrf 
+                        @method('PUT')
                         <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori">
-                        <button type="submit" class="btn btn-success">Tambah</button>
+                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" value="{{ $edit->nama_kategori }}">
+                        <button type="submit" class="btn btn-success">Update</button>                        
                     </form>
                 </li>
             </ul>
@@ -73,7 +74,6 @@
                     <tr>
                         <th>ID Kategori</th>
                         <th>Nama Kategori</th>
-                        <th>Modify</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,17 +81,6 @@
                         <tr>
                             <td>{{ $row['id_kategori'] }}</td>
                             <td>{{ $row['nama_kategori'] }}</td>
-                            <td class="d-flex">   
-                                <form action="{{ route('kategori.edit', ['id' => $row['id_kategori']]) }}" method="POST" class="me-2">
-                                    @csrf
-                                    <button name="edit" class="btn btn-primary">Edit</button>
-                                </form>
-                                <form action="{{ route('kategori.delete', $row['id_kategori']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button name="delete"class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -52,7 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Kategori
     Route::get('/kategori/kategori_table', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/kategori/kategori_table', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::put('/kategori/kategori_table/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::post('/kategori/kategori_edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::put('/kategori/kategori_edit/{id}', [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/kategori/kategori_table/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
     // Logout
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');

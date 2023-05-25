@@ -16,8 +16,7 @@ class KategoriController extends Controller
 
     public function index($id = null) {
         $data = Kategori::paginate(10);
-        $edit = ($id) ? Kategori::findOrFail($id) : null;
-        return view('kategori.kategori_table', compact('data', 'edit'));
+        return view('kategori.kategori_table', compact('data'));
         // return $data;
     }
 
@@ -30,6 +29,12 @@ class KategoriController extends Controller
         ];
         Kategori::create($data);
         return redirect()->route('kategori.index');
+    }
+
+    public function edit(Request $request, $id) {
+        $data = Kategori::paginate(10);
+        $edit = Kategori::findOrFail($id);
+        return view('kategori.kategori_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
     }
 
     public function update(Request $request, $id){
