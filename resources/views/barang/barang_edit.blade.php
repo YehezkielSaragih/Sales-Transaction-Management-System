@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toko Aneka ATK - Kategori Table</title>
+    <title>Toko Aneka ATK - Barang Edit</title>
     <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -22,16 +22,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Navbar Content -->
-            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
                     <a class="nav-item nav-link" href="/transaksi/transaksi_table">Transaksi</a>
                     <!-- Detail Transaksi -->
                     <a class="nav-item nav-link" href="/detail_transaksi/detail_transaksi_table">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link" href="/barang/barang_table">Barang</a>                    
+                    <a class="nav-item nav-link active" href="/barang/barang_table">Barang</a>                    
                     <!-- Kategori -->
-                    <a class="nav-item nav-link active" href="/kategori/kategori_table">Kategori</a>
+                    <a class="nav-item nav-link" href="/kategori/kategori_table">Kategori</a>
                 </div>
                 <!-- Logout -->
                 <form action="{{ route('logout') }}" method="POST">
@@ -46,7 +46,7 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tambah Data Kategori</div>
+            <div class="card-header">Tambah Data Barang</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Error Message -->
@@ -61,12 +61,17 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
-                    <!-- Create function redirect back to /kategori/kategori_table -->
-                    <form action="{{ route('kategori.create') }}" method="POST"> 
+                    <!-- Create function redirect back to /barang/barang_table -->
+                    <form action="{{ route('barang.update', ['id' => $editId]) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" required>
-                        <button type="submit" class="btn btn-success">Tambah</button>
+                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" value="{{ $edit->nama_kategori }}" required>
+                        <label>Barang</label>
+                        <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang" value="{{ $edit->nama_barang }}"required>
+                        <label>Harga Barang</label>
+                        <input type="number" class="form-control" placeholder="Harga Barang" name="harga_barang" value="{{ $edit->harga_barang }}"required>
+                        <button class="btn btn-success">Update</button>
                     </form>
                 </li>
             </ul>
@@ -76,39 +81,28 @@
     <!-- Main Table -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tabel Data Kategori</div>
-            <!-- Table -->
-            <table class="table table-bordered table-striped mt-3" id="kategori-table">
-                <thead>                        
+            <div class="card-header">Tabel Data Barang</div>
+            <table class="table table-bordered table-striped mt-3" id="barang-table">
+                <thead>
                     <tr>
-                        <th>ID Kategori</th>
+                        <th>ID Barang</th>
+                        <th>Nama Barang</th>
                         <th>Nama Kategori</th>
-                        <th>Modify</th>
+                        <th>Harga Barang</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $row)
+                    @foreach($data_joined as $row)
                         <tr>
-                            <td>{{ $row['id_kategori'] }}</td>
+                            <td>{{ $row['id_barang'] }}</td>
+                            <td>{{ $row['nama_barang'] }}</td>
                             <td>{{ $row['nama_kategori'] }}</td>
-                            <td class="d-flex">   
-                                <!-- Edit function redirect to /kategori/kategori_edit -->
-                                <form action="{{ route('kategori.edit', $row['id_kategori']) }}" method="GET" class="me-2">
-                                    @csrf
-                                    <button name="edit" class="btn btn-primary">Edit</button>
-                                </form>
-                                <!-- Delete function redirect back to /kategori/kategori_table -->
-                                <form action="{{ route('kategori.delete', $row['id_kategori']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button name="delete"class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
+                            <td>{{ $row['harga_barang'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div id="pagination">{{ $data->links() }}</div>
+            <div id="pagination">{{ $data_joined->links() }}</div>
         </div>
     </div>
 

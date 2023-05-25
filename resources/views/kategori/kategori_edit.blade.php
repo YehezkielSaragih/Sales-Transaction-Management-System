@@ -49,12 +49,12 @@
             <div class="card-header">Update Data Kategori</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <!-- Update function redirect back to /kategori -->
+                    <!-- Update function redirect back to /kategori/kategori_table -->
                     <form action="{{ route('kategori.update', ['id' => $editId]) }}" method="POST">
                         @csrf 
                         @method('PUT')
                         <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" value="{{ $edit->nama_kategori }}">
+                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" value="{{ $edit->nama_kategori }}" required>
                         <button type="submit" class="btn btn-success">Update</button>                        
                     </form>
                 </li>

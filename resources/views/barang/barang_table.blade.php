@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toko Aneka ATK - Homepage</title>
+    <title>Toko Aneka ATK - Barang Table</title>
     <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -46,16 +46,30 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tambah Barang</div>
+            <div class="card-header">Tambah Data Barang</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <form action="">
+                    <!-- Error Message -->
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ Session::get('error') }}
+                        </div>
+                    @endif
+                    <!-- Success Message -->
+                    @if(Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
+                    <!-- Create function redirect back to /barang/barang_table -->
+                    <form action="{{ route('barang.create') }}" method="POST">
+                        @csrf
                         <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori">
+                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori"  required>
                         <label>Barang</label>
-                        <input type="text" class="form-control" placeholder="Nama Barang">
+                        <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang" required>
                         <label>Harga Barang</label>
-                        <input type="text" class="form-control" placeholder="Harga Barang">
+                        <input type="number" class="form-control" placeholder="Harga Barang" name="harga_barang" required>
                         <button class="btn btn-success">Tambah</button>
                     </form>
                 </li>
@@ -71,8 +85,8 @@
                 <thead>
                     <tr>
                         <th>ID Barang</th>
-                        <th>Nama Kategori</th>
                         <th>Nama Barang</th>
+                        <th>Nama Kategori</th>
                         <th>Harga Barang</th>
                         <th>Modify</th>
                     </tr>
@@ -81,14 +95,19 @@
                     @foreach($data as $row)
                         <tr>
                             <td>{{ $row['id_barang'] }}</td>
-                            <td>{{ $row['id_kategori'] }}</td>
                             <td>{{ $row['nama_barang'] }}</td>
+                            <td>{{ $row['nama_kategori'] }}</td>
                             <td>{{ $row['harga_barang'] }}</td>
                             <td class="d-flex">   
-                                <form action="" method="POST" class="me-2">
+                                <!-- Edit function redirect to /barang/barang_edit -->
+                                <form action="{{ route('barang.edit', $row['id_barang']) }}" method="GET" class="me-2">
+                                    @csrf
                                     <button class="btn btn-primary">Edit</button>
                                 </form>
-                                <form action="" method="POST">
+                                <!-- Delete function redirect back to /barang/barang_table -->
+                                <form action="{{ route('barang.delete', $row['id_barang']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
                                     <button class="btn btn-danger">Delete</button>
                                 </form>
                             </td>

@@ -10,7 +10,7 @@ class KategoriController extends Controller
 {
     //
     public function index() {
-        $data = Kategori::paginate(10);
+        $data = Kategori::orderBy('id_kategori')->paginate(10);
         return view('kategori.kategori_table', compact('data'));
         // return $data;
     }
@@ -27,7 +27,7 @@ class KategoriController extends Controller
         Kategori::create($data);
         // Redirect to the index with success message
         $successMessage = 'Kategori berhasil ditambahkan.';
-        return redirect()->route('kategori.index')->with('success', $successMessage);
+        return redirect()->back()->with('success', $successMessage);
     }
 
     public function edit(Request $request, $id) {

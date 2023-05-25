@@ -33,10 +33,12 @@ use App\Http\Controllers\KategoriController;
 //     die("Could not open connection to database server.  Please check your configuration.");
 // }
 
+// Default route
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
+// Guest Only
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
@@ -44,15 +46,24 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
+// Admin Only
 Route::group(['middleware' => 'auth'], function () {
+    // Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Transaksi
     Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi');
+    // Detail Transaksi
     Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
-    Route::get('/barang/barang_table', [BarangController::class, 'index'])->name('barang');
+    // Barang
+    Route::get('/barang/barang_table', [BarangController::class, 'index'])->name('barang.index');
+    Route::post('/barang/barang_table', [BarangController::class, 'create'])->name('barang.create');
+    Route::get('/barang/barang_edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/barang_edit/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/barang_table/{id}', [BarangController::class, 'delete'])->name('barang.delete');
     // Kategori
     Route::get('/kategori/kategori_table', [KategoriController::class, 'index'])->name('kategori.index');
     Route::post('/kategori/kategori_table', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::post('/kategori/kategori_edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::get('/kategori/kategori_edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
     Route::put('/kategori/kategori_edit/{id}', [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/kategori/kategori_table/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
     // Logout
