@@ -58,15 +58,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Variable declaration -->
                     @php
                         $previousIdTransaksi = null;
                         $rowspanCount = 0;
                     @endphp
+                    <!-- Loop -->
                     @foreach($data as $index => $row)
+                        <!-- Rowspan  -->
                         @if($row['id_transaksi'] !== $previousIdTransaksi)
-                            @if($rowspanCount > 0)
-                                </td></tr>
-                            @endif
+                            <!-- Reset rowspan count -->
                             @php
                                 $rowspanCount = 0;
                                 $nextIndex = $index;
@@ -75,6 +76,7 @@
                                     $nextIndex++;
                                 }
                             @endphp
+                            <!-- Print -->
                             <tr>
                                 <td rowspan="{{ $rowspanCount }}">{{ $row['id_transaksi'] }}</td>
                                 <td>{{ $row['id_detail_transaksi'] }}</td>
@@ -82,7 +84,9 @@
                                 <td>{{ $row['jumlah_barang'] }}</td>
                                 <td>{{ $row['harga_barang_transaksi'] }}</td>
                             </tr>
+                        <!-- Non rowspan -->
                         @else
+                            <!-- Print -->
                             <tr>
                                 <td>{{ $row['id_detail_transaksi'] }}</td>
                                 <td>{{ $row['nama_barang'] }}</td>
@@ -94,9 +98,6 @@
                             $previousIdTransaksi = $row['id_transaksi'];
                         @endphp
                     @endforeach
-                    @if($rowspanCount > 0)
-                        </td></tr>
-                    @endif
                 </tbody>
             </table>
             <div id="detail_transaksi">{{ $data->links() }}</div>
