@@ -47,26 +47,56 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Detail Transaksi</div>
-            <table class="table table-bordered table-striped mt-3" id="detail_transaksi">
+            <table class="table table-bordered mt-3" id="detail_transaksi">
                 <thead>
                     <tr>
-                        <th>ID Detail Transaksi</th>
                         <th>ID Transaksi</th>
-                        <th>ID Barang</th>
+                        <th>ID Detail Transaksi</th>
+                        <th>Nama Barang</th>
                         <th>Jumlah Barang</th>
                         <th>Harga Barang Transaksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $row)
-                        <tr>
-                            <td>{{ $row['id_detail_transaksi'] }}</td>
-                            <td>{{ $row['id_transaksi'] }}</td>
-                            <td>{{ $row['id_barang'] }}</td>
-                            <td>{{ $row['jumlah_barang'] }}</td>
-                            <td>{{ $row['harga_barang_transaksi'] }}</td>
-                        </tr>
+                    @php
+                        $previousIdTransaksi = null;
+                        $rowspanCount = 0;
+                    @endphp
+                    @foreach($data as $index => $row)
+                        @if($row['id_transaksi'] !== $previousIdTransaksi)
+                            @if($rowspanCount > 0)
+                                </td></tr>
+                            @endif
+                            @php
+                                $rowspanCount = 0;
+                                $nextIndex = $index;
+                                while ($nextIndex < count($data) && $data[$nextIndex]['id_transaksi'] === $row['id_transaksi']) {
+                                    $rowspanCount++;
+                                    $nextIndex++;
+                                }
+                            @endphp
+                            <tr>
+                                <td rowspan="{{ $rowspanCount }}">{{ $row['id_transaksi'] }}</td>
+                                <td>{{ $row['id_detail_transaksi'] }}</td>
+                                <td>{{ $row['nama_barang'] }}</td>
+                                <td>{{ $row['jumlah_barang'] }}</td>
+                                <td>{{ $row['harga_barang_transaksi'] }}</td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td>{{ $row['id_detail_transaksi'] }}</td>
+                                <td>{{ $row['nama_barang'] }}</td>
+                                <td>{{ $row['jumlah_barang'] }}</td>
+                                <td>{{ $row['harga_barang_transaksi'] }}</td>
+                            </tr>
+                        @endif
+                        @php
+                            $previousIdTransaksi = $row['id_transaksi'];
+                        @endphp
                     @endforeach
+                    @if($rowspanCount > 0)
+                        </td></tr>
+                    @endif
                 </tbody>
             </table>
             <div id="detail_transaksi">{{ $data->links() }}</div>
