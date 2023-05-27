@@ -55,6 +55,7 @@
                 <div class="card-header">Transaksi {{ $today }}</div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Terjadi {{ $transaksiCount }} transaksi</li>
+                    <li class="list-group-item">Total transaksi mencapai Rp {{ $totalTransaksi }} </li>
                 </ul>
             </div>
             <div class="card mt-3" id="homeinfo">
