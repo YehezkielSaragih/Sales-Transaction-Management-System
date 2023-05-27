@@ -77,14 +77,12 @@ class DetailTransaksiController extends Controller
 
     public function edit($id){
         // Avoiding pagination error
-        $temp = DetailTransaksi::join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
+        $data = DetailTransaksi::join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
         ->select('detail_transaksi.id_transaksi', 'detail_transaksi.id_detail_transaksi', 'barang.nama_barang', 'detail_transaksi.jumlah_barang', 'detail_transaksi.harga_barang_transaksi')
         ->orderBy('id_detail_transaksi', 'asc');
-        // For table view
-        $data = $temp->paginate(10);
         // For form value
-        $edit = $temp->where('id_detail_transaksi', $id)->first();
-        return view('detail_transaksi.detail_transaksi_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
+        $edit = $data->where('id_detail_transaksi', $id)->first();
+        return view('detail_transaksi.detail_transaksi_edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

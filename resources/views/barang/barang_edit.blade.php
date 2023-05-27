@@ -78,34 +78,6 @@
         </div>
     </div>
 
-    <!-- Main Table -->
-    <div class="container">
-        <div class="card">
-            <div class="card-header">Tabel Data Barang</div>
-            <table class="table table-bordered table-striped mt-3" id="barang">
-                <thead>
-                    <tr>
-                        <th>ID Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Nama Kategori</th>
-                        <th>Harga Barang</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $row)
-                        <tr>
-                            <td>{{ $row['id_barang'] }}</td>
-                            <td>{{ $row['nama_barang'] }}</td>
-                            <td>{{ $row['nama_kategori'] }}</td>
-                            <td>{{ $row['harga_barang'] }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div id="barang">{{ $data->links() }}</div>
-        </div>
-    </div>
-
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 

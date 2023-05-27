@@ -45,14 +45,12 @@ class BarangController extends Controller
 
     public function edit(Request $request, $id) {
         // Avoiding pagination error
-        $temp = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
+        $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
         ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
-        ->orderBy('barang.id_barang', 'asc');
-        // For table view
-        $data = $temp->paginate(10);   
+        ->orderBy('barang.id_barang', 'asc'); 
         // For form value
-        $edit = $temp->where('id_barang', $id)->first();
-        return view('barang.barang_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
+        $edit = $data->where('id_barang', $id)->first();
+        return view('barang.barang_edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

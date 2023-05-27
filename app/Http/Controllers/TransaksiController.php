@@ -74,12 +74,10 @@ class TransaksiController extends Controller
 
     public function edit($id){
         // Avoid pagination error
-        $temp = Transaksi::query();
-        // For table view
-        $data = $temp->paginate(10);
+        $data = Transaksi::query();
         // For form value
-        $edit = $temp->where('id_transaksi', $id)->first();
-        return view('transaksi.transaksi_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
+        $edit = $data->where('id_transaksi', $id)->first();
+        return view('transaksi.transaksi_edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

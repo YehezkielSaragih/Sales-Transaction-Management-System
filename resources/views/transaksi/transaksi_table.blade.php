@@ -110,7 +110,7 @@
                             <td>{{ $row['total_transaksi'] }}</td>
                             <td class="d-flex">   
                                 <!-- Edit function redirect to /barang/barang_edit -->
-                                <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="GET" class="me-2">
+                                <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">
                                     @csrf
                                     <button class="btn btn-primary">Edit</button>
                                 </form>

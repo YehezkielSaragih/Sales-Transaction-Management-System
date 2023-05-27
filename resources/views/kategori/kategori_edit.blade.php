@@ -62,31 +62,6 @@
         </div>
     </div>
 
-    <!-- Main Table -->
-    <div class="container">
-        <div class="card">
-            <div class="card-header">Tabel Data Kategori</div>
-            <!-- Table -->
-            <table class="table table-bordered table-striped mt-3" id="kategori">
-                <thead>                        
-                    <tr>
-                        <th>ID Kategori</th>
-                        <th>Nama Kategori</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $row)
-                        <tr>
-                            <td>{{ $row['id_kategori'] }}</td>
-                            <td>{{ $row['nama_kategori'] }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div id="kategori">{{ $data->links() }}</div>
-        </div>
-    </div>
-
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
