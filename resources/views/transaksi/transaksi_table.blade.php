@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toko Aneka ATK - Transaksi</title>
+    <title>Toko Aneka ATK - Transaksi Table</title>
     <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -22,7 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Navbar Content -->
-            <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
                     <a class="nav-item nav-link active" href="/transaksi/transaksi_table">Transaksi</a>
@@ -109,18 +109,18 @@
                             <td>{{ $row['tanggal'] }}</td>
                             <td>{{ $row['total_transaksi'] }}</td>
                             <td class="d-flex">   
-                                    <!-- Edit function redirect to /barang/barang_edit -->
-                                    <form action="" method="GET" class="me-2">
-                                        @csrf
-                                        <button class="btn btn-primary">Edit</button>
-                                    </form>
-                                    <!-- Delete function redirect back to /barang/barang_table -->
-                                    <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
+                                <!-- Edit function redirect to /barang/barang_edit -->
+                                <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="GET" class="me-2">
+                                    @csrf
+                                    <button class="btn btn-primary">Edit</button>
+                                </form>
+                                <!-- Delete function redirect back to /barang/barang_table -->
+                                <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Toko Aneka ATK - Barang Edit</title>
+    <title>Toko Aneka ATK - Transaksi Edit</title>
     <!-- Style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
@@ -22,14 +22,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Navbar Content -->
-            <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
-                    <a class="nav-item nav-link" href="/transaksi/transaksi_table">Transaksi</a>
+                    <a class="nav-item nav-link active" href="/transaksi/transaksi_table">Transaksi</a>
                     <!-- Detail Transaksi -->
                     <a class="nav-item nav-link" href="/detail_transaksi/detail_transaksi_table">Detail Transaksi</a>                         
                     <!-- Barang -->
-                    <a class="nav-item nav-link active" href="/barang/barang_table">Barang</a>                    
+                    <a class="nav-item nav-link" href="/barang/barang_table">Barang</a>                    
                     <!-- Kategori -->
                     <a class="nav-item nav-link" href="/kategori/kategori_table">Kategori</a>
                 </div>
@@ -42,11 +42,10 @@
             </div>
         </div>
     </nav>
-
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Update Data Barang {{ $edit->id_barang }}</div>
+            <div class="card-header">Update Data Transaksi {{ $edit->id_transaksi }}</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Error Message -->
@@ -61,17 +60,14 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
-                    <!-- Create function redirect back to /barang/barang_table -->
-                    <form action="" method="POST">
+                    <!-- Create function redirect back to /transaksi/transaksi_table -->
+                    <form action="{{ route('transaksi.update', ['id' => $editId]) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <label>Kategori</label>
-                        <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" value="{{ $edit->nama_kategori }}" required>
-                        <label>Barang</label>
-                        <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang" value="{{ $edit->nama_barang }}"required>
-                        <label>Harga Barang</label>
-                        <input type="number" class="form-control" placeholder="Harga Barang" name="harga_barang" value="{{ $edit->harga_barang }}"required>
-                        <button class="btn btn-success">Update</button>
+                        <label for="tanggal">Tanggal Transaksi</label>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $edit->tanggal }}"required>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success">Update</button>
                     </form>
                 </li>
             </ul>
@@ -81,28 +77,26 @@
     <!-- Main Table -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tabel Data Barang</div>
-            <table class="table table-bordered table-striped mt-3" id="barang">
+            <div class="card-header">Tabel Data Transaksi</div>
+            <table class="table table-bordered table-striped mt-3" id="transaksi">
                 <thead>
                     <tr>
-                        <th>ID Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Nama Kategori</th>
-                        <th>Harga Barang</th>
+                        <th>ID Transaksi</th>
+                        <th>Tanggal</th>
+                        <th>Total Transaksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($data as $row)
                         <tr>
-                            <td>{{ $row['id_barang'] }}</td>
-                            <td>{{ $row['nama_barang'] }}</td>
-                            <td>{{ $row['nama_kategori'] }}</td>
-                            <td>{{ $row['harga_barang'] }}</td>
+                            <td>{{ $row['id_transaksi'] }}</td>
+                            <td>{{ $row['tanggal'] }}</td>
+                            <td>{{ $row['total_transaksi'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <div id="barang">{{ $data->links() }}</div>
+            <div id="transaksi">{{ $data->links() }}</div>
         </div>
     </div>
 

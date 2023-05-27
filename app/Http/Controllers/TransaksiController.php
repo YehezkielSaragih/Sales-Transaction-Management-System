@@ -72,6 +72,31 @@ class TransaksiController extends Controller
         return redirect()->back()->with('success', $successMessage);
     }
 
+    public function edit($id){
+        // Avoid pagination error
+        $temp = Transaksi::query();
+        // For table view
+        $data = $temp->paginate(10);
+        // For form value
+        $edit = $temp->where('id_transaksi', $id)->first();
+        return view('transaksi.transaksi_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
+    }
+
+    public function update(Request $request, $id){
+        // Validate the request
+        $request->validate([
+            'tanggal' => 'required'
+        ]);
+        // Update data
+        $transaksi = Transaksi::findOrFail($id);
+        $transaksi->tanggal = $request->input('tanggal');
+        $transaksi->save();
+        // Redirect to the index with success message
+        $successMessage = 'Transaksi berhasil diubah.';
+        return redirect()->route('transaksi.index')->with('success', $successMessage);
+
+    }
+
     public function delete($id){
         // Delete detail transaksi records
         $detailTransaksi = DetailTransaksi::where('id_transaksi', $id)->get();
