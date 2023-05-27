@@ -51,7 +51,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Transaksi
-    Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi');
+    Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('/transaksi/transaksi_table', [TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::delete('/transaksi/transaksi_table/{id}', [TransaksiController::class, 'delete'])->name('transaksi.delete');
     // Detail Transaksi
     Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi.index');
     Route::post('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'create'])->name('detail_transaksi.create');

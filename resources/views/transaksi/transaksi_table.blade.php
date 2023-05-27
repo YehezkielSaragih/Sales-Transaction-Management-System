@@ -61,7 +61,7 @@
                         </div>
                     @endif
                     <!-- Create function redirect back to /transaksi/transaksi_table -->
-                    <form action="" method="POST">
+                    <form action="{{ route('transaksi.create') }}" method="POST">
                         @csrf
                         <!-- Static Form Fields -->
                         <div class="form-group">
@@ -99,6 +99,7 @@
                         <th>ID Transaksi</th>
                         <th>Tanggal</th>
                         <th>Total Transaksi</th>
+                        <th>Modify</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +108,19 @@
                             <td>{{ $row['id_transaksi'] }}</td>
                             <td>{{ $row['tanggal'] }}</td>
                             <td>{{ $row['total_transaksi'] }}</td>
+                            <td class="d-flex">   
+                                    <!-- Edit function redirect to /barang/barang_edit -->
+                                    <form action="" method="GET" class="me-2">
+                                        @csrf
+                                        <button class="btn btn-primary">Edit</button>
+                                    </form>
+                                    <!-- Delete function redirect back to /barang/barang_table -->
+                                    <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                         </tr>
                     @endforeach
                 </tbody>

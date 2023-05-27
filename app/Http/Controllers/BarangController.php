@@ -89,6 +89,7 @@ class BarangController extends Controller
         }
         // Barang is not used
         $barang->delete();
+        // Redirect to the index with success message
         $successMessage = 'Barang berhasil dihapus.';
         return back()->with('success', $successMessage);
     }

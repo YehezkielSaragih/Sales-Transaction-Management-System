@@ -139,6 +139,10 @@ class DetailTransaksiController extends Controller
         $transaksi->total_transaksi -= $hargaBarangTransaksi;
         // Save transaksi row
         $transaksi->save();
+        // If total transaksi = 0 then delete transaksi row
+        if($transaksi->total_transaksi == 0){
+            $transaksi->delete();
+        }
         // Delete detail transaksi row
         $detailTransaksi->delete();
         // Redirect to the index with success message

@@ -63,6 +63,7 @@ class KategoriController extends Controller
         }
         // Kategori is not used
         $kategori->delete();
+        // Redirect to the index with success message
         $successMessage = 'Kategori berhasil dihapus.';
         return back()->with('success', $successMessage);
     }
