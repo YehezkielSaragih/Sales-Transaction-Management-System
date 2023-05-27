@@ -23,7 +23,7 @@ return new class extends Migration
         Schema::create('kategori', function (Blueprint $table) {
             // Column Setup
             $table->unsignedBigInteger('id_kategori', 8)->autoIncrement()->primary();
-            $table->string('nama_kategori', 100)->nullable(false);
+            $table->string('nama_kategori', 100)->unique()->nullable(false);
             $table->timestamps();
         });
     }
