@@ -9,41 +9,14 @@ use App\Models\Kategori;
 class BarangController extends Controller
 {
     //
-    // public function index(){
-    //     $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
-    //     ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
-    //     ->orderBy('barang.id_barang', 'asc')
-    //     ->paginate(10);
-    //     $data2 = Kategori::orderBy('id_kategori')->paginate(10);
-    //     return view('barang.barang_table', compact('data','data2'));        
-    // }
-
-    public function index(Request $request)
-    {
+    public function index(){
         $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
-            ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
-            ->orderBy('barang.id_barang', 'asc');
-
-        $data2 = Kategori::orderBy('id_kategori')->paginate(10);
-
-        if ($request->has('nama_barang')) 
-        {
-            $data = $data->where('nama_barang', 'LIKE', "%" . $request->input('nama_barang') . "%");
-        }
-
-        if ($request->has('kategori_barang')) 
-        {
-            $data = $data->where('kategori.nama_kategori', $request->input('kategori_barang'));
-        }
-
-        $data = $data->paginate(10);
-        // Pass the search query back to the view
-        $searchQuery = $request->input('nama_barang');
-        $selectedKategori = $request->input('kategori_barang');
-
-        return view('barang.barang_table', compact('data', 'searchQuery', 'selectedKategori','data2'));
+        ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
+        ->orderBy('barang.id_barang', 'asc')
+        ->paginate(10);
+        return view('barang.barang_table', compact('data'));
+        // return $data;
     }
-
     public function create(Request $request){
         // Validate the request
         $request->validate([
@@ -62,7 +35,7 @@ class BarangController extends Controller
         $data = [
             'id_kategori' => $kategori->id_kategori,
             'nama_barang' => $request->nama_barang,
-            'harga_barang' => $request->harga_barang,
+            'harga_barang' => $request->harga_barang
         ];
         BARANG::create($data);
         // Redirect to the index with success message
