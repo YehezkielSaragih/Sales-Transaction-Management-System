@@ -81,6 +81,31 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Barang</div>
+            <!-- Search Bar -->
+            <form action="{{ route('barang.index') }}" method="GET">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <strong>
+                                <label>Nama Barang</label>
+                            </strong>                            
+                            <input type="text" class="form-control" placeholder="Search" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
+                        </div>             
+                        <div class="col-md-4">
+                            <strong>
+                                <label>Nama Kategori</label>
+                            </strong>
+                            <select id="filter-kategori" class="form-control" name = "kategori_barang">
+                                <option value="" >--Select--</option>
+                                @foreach($data2 as $row)
+                                    <option value="{{$row->nama_kategori}}" @if($selectedKategori == $row->nama_kategori) selected @endif>{{$row->nama_kategori}}</option>
+                                @endforeach
+                            </select>
+                        </div>                    
+                    </div>
+                </div>
+            </form>
+            <!-- Search Bar -->
             <table class="table table-bordered table-striped mt-3" id="barang">
                 <thead>
                     <tr>
