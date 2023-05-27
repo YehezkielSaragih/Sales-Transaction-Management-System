@@ -30,9 +30,13 @@ class KategoriController extends Controller
         return redirect()->back()->with('success', $successMessage);
     }
 
-    public function edit(Request $request, $id) {
-        $data = Kategori::paginate(10);
-        $edit = Kategori::findOrFail($id);
+    public function edit($id) {
+        // Avoiding pagination error
+        $temp = Kategori::query();
+        // For table view
+        $data = $temp->paginate(10);
+        // For form value
+        $edit = $temp->where('id_kategori', $id)->first();
         return view('kategori.kategori_edit', ['editId' => $id, 'edit' => $edit], compact('data'));
     }
 

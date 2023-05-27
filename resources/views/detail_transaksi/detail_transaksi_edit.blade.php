@@ -46,7 +46,7 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tambah Data Detail Transaksi</div>
+            <div class="card-header">Update Data Detail Transaksi {{ $edit->id_transaksi }}</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Error Message -->
@@ -62,28 +62,15 @@
                         </div>
                     @endif
                     <!-- Create function redirect back to /detail_transaksi/detail_transaksi_table -->
-                    <form action="{{ route('detail_transaksi.create') }}" method="POST">
+                    <form action="{{ route('detail_transaksi.update', ['id' => $editId]) }}" method="POST">
                         @csrf
-                        <!-- Static Form Fields -->
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal Transaksi</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
-                        </div>
-                        <!-- Dynamic Form Fields -->
-                        <div class="card mb-3" id="dynamic-form">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <label for="barang">Nama Barang</label>
-                                    <input type="text" class="form-control" name="nama_barang[]" required>
-                                    <label for="jumlah-barang">Jumlah Barang</label>
-                                    <input type="number" class="form-control" name="jumlah_barang[]" required>
-                                    <button class="btn btn-danger" onclick="removeField(event)">Delete</button>
-                                </li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn btn-primary" onclick="addField()">Add Another</button>
+                        @method('PUT')
+                        <label for="barang">Nama Barang</label>
+                        <input type="text" class="form-control" name="nama_barang" value="{{ $edit->nama_barang }}" required>
+                        <label for="jumlah-barang">Jumlah Barang</label>
+                        <input type="number" class="form-control" name="jumlah_barang" value="{{ $edit->jumlah_barang }}" required>
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-success">Tambah</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                     </form>
                 </li>
             </ul>
@@ -102,7 +89,6 @@
                         <th>Nama Barang</th>
                         <th>Jumlah Barang</th>
                         <th>Harga Barang Transaksi</th>
-                        <th>Modify</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,19 +117,6 @@
                                 <td>{{ $row['nama_barang'] }}</td>
                                 <td>{{ $row['jumlah_barang'] }}</td>
                                 <td>{{ $row['harga_barang_transaksi'] }}</td>
-                                <td class="d-flex">   
-                                    <!-- Edit function redirect to /barang/barang_edit -->
-                                    <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="GET" class="me-2">
-                                        @csrf
-                                        <button class="btn btn-primary">Edit</button>
-                                    </form>
-                                    <!-- Delete function redirect back to /barang/barang_table -->
-                                    <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                         <!-- Non rowspan -->
                         @else
@@ -153,19 +126,6 @@
                                 <td>{{ $row['nama_barang'] }}</td>
                                 <td>{{ $row['jumlah_barang'] }}</td>
                                 <td>{{ $row['harga_barang_transaksi'] }}</td>
-                                <td class="d-flex">   
-                                    <!-- Edit function redirect to /barang/barang_edit -->
-                                    <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="GET" class="me-2">
-                                        @csrf
-                                        <button class="btn btn-primary">Edit</button>
-                                    </form>
-                                    <!-- Delete function redirect back to /barang/barang_table -->
-                                    <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                         @endif
                         @php
@@ -180,7 +140,6 @@
 
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script src="{{ URL::asset('js/dynamic_form.js') }}"></script>
 
 </body>
 

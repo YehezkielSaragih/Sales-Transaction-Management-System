@@ -46,7 +46,7 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Tambah Data Barang</div>
+            <div class="card-header">Update Data Barang {{ $edit->id_barang }}</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Error Message -->
@@ -92,7 +92,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data_joined as $row)
+                    @foreach($data as $row)
                         <tr>
                             <td>{{ $row['id_barang'] }}</td>
                             <td>{{ $row['nama_barang'] }}</td>
@@ -102,7 +102,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <div id="barang">{{ $data_joined->links() }}</div>
+            <div id="barang">{{ $data->links() }}</div>
         </div>
     </div>
 

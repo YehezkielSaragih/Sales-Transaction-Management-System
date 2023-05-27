@@ -46,7 +46,7 @@
     <!-- Form Card -->
     <div class="container">
         <div class="card">
-            <div class="card-header">Update Data Kategori</div>
+            <div class="card-header">Update Data Kategori {{ $edit->id_kategori }}</div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Update function redirect back to /kategori/kategori_table -->

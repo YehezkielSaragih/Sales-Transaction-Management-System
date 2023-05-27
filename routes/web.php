@@ -53,7 +53,11 @@ Route::group(['middleware' => 'auth'], function () {
     // Transaksi
     Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi');
     // Detail Transaksi
-    Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi');
+    Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi.index');
+    Route::post('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'create'])->name('detail_transaksi.create');
+    Route::get('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'edit'])->name('detail_transaksi.edit');
+    Route::put('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'update'])->name('detail_transaksi.update');
+    Route::delete('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'delete'])->name('detail_transaksi.delete');
     // Barang
     Route::get('/barang/barang_table', [BarangController::class, 'index'])->name('barang.index');
     Route::post('/barang/barang_table', [BarangController::class, 'create'])->name('barang.create');
