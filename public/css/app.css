@@ -2,9 +2,11 @@
     padding: 10px;
 }
 
-/* body{
-    background-image: url("/images/...");
-} */
+#authpage{
+    height: 100vh;
+    background: #7B3EFF;
+    background: linear-gradient(to bottom, #7B3EFF, #24A5D9);
+}
 
 .nav-item{
     transition: all;
