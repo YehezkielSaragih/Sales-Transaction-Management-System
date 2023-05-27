@@ -17,18 +17,13 @@
     color: orangered!important;
 }
 
-.searchbar{
-    width: 50%;
+#homeinfo{
+    width: 40%;
 }
 
 .form-control{
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-#joined-table{
-    width: 100%;
-    margin-left: 15px;
 }
 
 #transaksi{

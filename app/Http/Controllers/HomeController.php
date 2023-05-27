@@ -13,23 +13,11 @@ class HomeController extends Controller
     //
     function index()
     {
-        $data = Transaksi::join('detail_transaksi', 'transaksi.id_transaksi', '=', 'detail_transaksi.id_transaksi')
-            ->join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
-            ->join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
-            ->select(
-                'transaksi.id_transaksi',
-                'transaksi.tanggal',
-                'barang.nama_barang AS barang',
-                'kategori.nama_kategori AS kategori',
-                'barang.harga_barang',
-                'detail_transaksi.jumlah_barang',
-                'detail_transaksi.harga_barang_transaksi',
-                'transaksi.total_transaksi'
-            )
-            ->orderBy('transaksi.id_transaksi', 'asc')
-            ->paginate(10);
+        $today = date('Y-m-d');
+        $transaksiCount = Transaksi::where('tanggal', $today)->count();
+        $barangCount = Barang::count();
+        $kategoriCount = Kategori::count();
 
-        return view('home', compact('data'));
-        // return $data;
+        return view('home', compact('today', 'transaksiCount', 'barangCount', 'kategoriCount'));
     }
 }

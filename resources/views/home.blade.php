@@ -43,48 +43,34 @@
         </div>
     </nav>
 
-
-    <!-- Main -->
-    <div class="container">
+    <!-- Welcome-->
+    <div class="container mt-2">
        <h1> Welcome, {{ Auth::user()->name }}</h1>
     </div>
 
-    <!-- Main Table -->
-    <div class="container">
-        <table class="table table-bordered table-striped" id="joined-table">
-            <thead>
-                <tr>
-                    <th>ID Transaksi</th>
-                    <th>Tanggal</th>
-                    <th>Barang</th>
-                    <th>Kategori</th>
-                    <th>Harga Barang</th>
-                    <th>Jumlah Barang</th>
-                    <th>Harga Barang Transaksi</th>
-                    <th>Total Harga Transaksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $row)
-                    <tr>
-                        <td>{{ $row['id_transaksi'] }}</td>
-                        <td>{{ $row['tanggal'] }}</td>
-                        <td>{{ $row['barang'] }}</td>
-                        <td>{{ $row['kategori'] }}</td>
-                        <td>{{ $row['harga_barang'] }}</td>
-                        <td>{{ $row['jumlah_barang'] }}</td>
-                        <td>{{ $row['harga_barang_transaksi'] }}</td>
-                        <td>{{ $row['total_transaksi'] }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-center">{{ $data->links() }}</div>
+    <!-- Main -->
+    <div class="container mt-3">
+        <!-- <div class="row"> -->
+            <div class="card mt-3" id="homeinfo">
+                <div class="card-header">Transaksi {{ $today }}</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Terjadi {{ $transaksiCount }} transaksi</li>
+                </ul>
+            </div>
+            <div class="card mt-3" id="homeinfo">
+                <div class="card-header">Barang</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Terdapat {{ $barangCount }} jenis barang yang tersedia</li>
+                </ul>
+            </div>
+            <div class="card mt-3" id="homeinfo">
+                <div class="card-header">Kategori</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Terdapat {{ $kategoriCount }} kategori barang yang tersedia</li>
+                </ul>
+            </div>
+        <!-- </div> -->
     </div>
-
-    <!-- Pagination -->
-    
-    <!-- CRUD -->
 
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
