@@ -15,6 +15,7 @@ class DetailTransaksiController extends Controller
         // Sort query
         $sortField = $request->input('sort_field', 'id_detail_transaksi');
         $sortOrder = $request->input('sort_order', 'asc');
+        $pageSize = $request->input('page_size', 10);
         
         // Data
         $data = DetailTransaksi::join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
@@ -38,6 +39,7 @@ class DetailTransaksiController extends Controller
         $data->appends([
             'sort_field' => $sortField,
             'sort_order' => $sortOrder,
+            'page_size' => $pageSize,
             'nama_barang' => $request->input('nama_barang'),
             'range_harga_min' => $request->input('range_harga_min'),
             'range_harga_max' => $request->input('range_harga_max')
@@ -48,10 +50,11 @@ class DetailTransaksiController extends Controller
         $rangeQueryMax = $request-> input('range_harga_max');
         
         // Return view
-        return view('detail_transaksi.detail_transaksi_table', compact('data','searchQuery','rangeQueryMin','rangeQueryMax', 'sortField', 'sortOrder'));
+        return view('detail_transaksi.detail_transaksi_table', compact('data','searchQuery','rangeQueryMin','rangeQueryMax', 'sortField', 'sortOrder', 'pageSize'));
     }
 
     public function create(Request $request){
+
         // Validate the request
         $request->validate([
             'tanggal' => 'required',
@@ -60,14 +63,17 @@ class DetailTransaksiController extends Controller
             'jumlah_barang' => 'required|array',
             'jumlah_barang.*' => 'required|numeric|min:1',
         ]);
+
         // Get the form input values
         $tanggal = $request->input('tanggal');
         $namaBarangInputs = $request->input('nama_barang');
         $jumlahBarangInputs = $request->input('jumlah_barang');
+
         // Declare variables
         $idBarang = [];
         $hargaBarangTransaksi = [];
         $totalTransaksi = 0;
+
         // First loop
         foreach ($namaBarangInputs as $index => $namaBarang) {
             // Check if nama barang is valid
@@ -84,6 +90,7 @@ class DetailTransaksiController extends Controller
             // Calculate total transaksi
             $totalTransaksi += $hargaBarangTransaksi[$index];
         }
+
         // Create data, transaksi record and take the id
         $dataTransaksi = [
             'tanggal' => $tanggal,
@@ -91,7 +98,7 @@ class DetailTransaksiController extends Controller
         ];
         $transaksi = Transaksi::create($dataTransaksi);
         $idTransaksi = $transaksi->id_transaksi;
-        // return $idTransaksi;
+
         // Create data and detail transaksi record
         foreach ($namaBarangInputs as $index => $namaBarang) {
             $dataDetailTransaksi = [
@@ -102,27 +109,32 @@ class DetailTransaksiController extends Controller
             ];
             DetailTransaksi::create($dataDetailTransaksi);
         }
+
         // Show success message or perform any other action
         $successMessage = 'Transaksi berhasil ditambahkan.';
         return redirect()->back()->with('success', $successMessage);
     }
 
     public function edit($id){
+
         // Avoiding pagination error
         $data = DetailTransaksi::join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
         ->select('detail_transaksi.id_transaksi', 'detail_transaksi.id_detail_transaksi', 'barang.nama_barang', 'detail_transaksi.jumlah_barang', 'detail_transaksi.harga_barang_transaksi')
         ->orderBy('id_detail_transaksi', 'asc');
+
         // For form value
         $edit = $data->where('id_detail_transaksi', $id)->first();
         return view('detail_transaksi.detail_transaksi_edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){
+
         // Validate the request
         $request->validate([
             'nama_barang' => 'required',
             'jumlah_barang' => 'required|numeric'
         ]);
+
         // Search for barang based on nama barang
         $barang = Barang::where('nama_barang', $request->input('nama_barang'))->first();
         if (!$barang) {
@@ -130,6 +142,7 @@ class DetailTransaksiController extends Controller
             return redirect()->back()->with('error', $errorMessage);
         }
         $idBarang = $barang->id_barang;
+
         // Prev Harga Transaksi
         $detailTransaksi = DetailTransaksi::findOrFail($id);
         $prevHargaBarangTransaksi = $detailTransaksi->harga_barang_transaksi;
@@ -137,6 +150,7 @@ class DetailTransaksiController extends Controller
         $hargaBarang = $barang->harga_barang;
         $jumlahBarang = $request->input('jumlah_barang');
         $newHargaBarangTransaksi = $hargaBarang * $jumlahBarang;
+
         // Update transaksi data
         $transaksi = Transaksi::findOrFail($detailTransaksi->id_transaksi);
         if($newHargaBarangTransaksi > $prevHargaBarangTransaksi){
@@ -146,17 +160,20 @@ class DetailTransaksiController extends Controller
             $transaksi->total_transaksi -= $prevHargaBarangTransaksi - $newHargaBarangTransaksi;
         }
         $transaksi->save();
+
         // Update detail transaksi data
         $detailTransaksi->id_barang = $idBarang;
         $detailTransaksi->jumlah_barang = $jumlahBarang;
         $detailTransaksi->harga_barang_transaksi = $newHargaBarangTransaksi;
         $detailTransaksi->save();
+
         // Redirect to the index with success message
         $successMessage = 'Detail transaksi berhasil diubah.';
         return redirect()->route('detail_transaksi.index')->with('success', $successMessage);
     }
 
     public function delete($id){
+
         // Get detail transaksi row
         $detailTransaksi = DetailTransaksi::findOrFail($id);
         // Get id transaksi from detail transaksi row
@@ -175,6 +192,7 @@ class DetailTransaksiController extends Controller
         if($transaksi->total_transaksi == 0){
             $transaksi->delete();
         }
+        
         // Redirect to the index with success message
         $successMessage = 'Detail transaksi berhasil dihapus.';
         return back()->with('success', $successMessage);

@@ -122,8 +122,18 @@
                     </div>
                 </div>
             </form>
+            <!-- Pagination -->
+            <form action="{{ route('detail_transaksi.index') }}" method="GET" id="detail_transaksi">
+                <label for="page_size">Show :</label>
+                <select name="page_size" id="page_size" onchange="this.form.submit()">
+                    <option value="10" {{ $pageSize == 10 ? 'selected' : '' }}>10</option>
+                    <option value="15" {{ $pageSize == 15 ? 'selected' : '' }}>15</option>
+                    <option value="20" {{ $pageSize == 20 ? 'selected' : '' }}>20</option>
+                    <option value="25" {{ $pageSize == 25 ? 'selected' : '' }}>25</option>
+                </select>
+            </form>
             <!-- Table -->
-            <table class="table table-bordered" id="detail_transaksi">
+            <table class="table table-bordered mt-3" id="detail_transaksi">
                 <thead>
                     <tr>
                         <th>
