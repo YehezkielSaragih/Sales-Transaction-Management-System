@@ -93,7 +93,9 @@
     <!-- Main Table -->
     <div class="container">
         <div class="card">
+
             <div class="card-header">Tabel Data Detail Transaksi</div>
+            
             <!-- Search Bar -->
             <form action="{{ route('detail_transaksi.index') }}" method="GET">
                 <div class="card-body">
@@ -122,6 +124,7 @@
                     </div>
                 </div>
             </form>
+
             <!-- Pagination -->
             <form action="{{ route('detail_transaksi.index') }}" method="GET" id="detail_transaksi">
                 <label for="page_size">Show :</label>
@@ -132,6 +135,7 @@
                     <option value="25" {{ $pageSize == 25 ? 'selected' : '' }}>25</option>
                 </select>
             </form>
+
             <!-- Table -->
             <table class="table table-bordered mt-3" id="detail_transaksi">
                 <thead>
@@ -273,7 +277,10 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <!-- Pagination -->
             <div id="detail_transaksi">{{ $data->links() }}</div>
+
         </div>
     </div>
 

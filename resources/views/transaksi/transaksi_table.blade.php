@@ -42,6 +42,7 @@
             </div>
         </div>
     </nav>
+    
     <!-- Form Card -->
     <div class="container">
         <div class="card">
@@ -92,8 +93,10 @@
     <!-- Main Table -->
     <div class="container">
         <div class="card">
+
             <div class="card-header">Tabel Data Transaksi</div>
-            <!--Select-->
+
+            <!-- Search bar -->
             <form action="{{ route('transaksi.index') }}" method="GET">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -119,6 +122,7 @@
                     </div>
                 </div>
             </form>
+
             <!-- Pagination -->
             <form action="{{ route('transaksi.index') }}" method="GET" id="transaksi">
                 <label for="page_size">Show :</label>
@@ -129,6 +133,7 @@
                     <option value="25" {{ $pageSize == 25 ? 'selected' : '' }}>25</option>
                 </select>
             </form>
+
             <!--Table-->
             <table class="table table-bordered table-striped mt-3" id="transaksi">
                 <thead>
@@ -182,12 +187,12 @@
                             <td>{{ date('m/d/Y', strtotime($row['tanggal'])) }}</td>
                             <td>Rp {{ $row['total_transaksi'] }}</td>
                             <td class="d-flex">   
-                                <!-- Edit function redirect to /barang/barang_edit -->
+                                <!-- Edit function redirect to /transaksi/transaksi_edit -->
                                 <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">
                                     @csrf
                                     <button class="btn btn-primary">Edit</button>
                                 </form>
-                                <!-- Delete function redirect back to /barang/barang_table -->
+                                <!-- Delete function redirect back to /transaksi/transaksi_table -->
                                 <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -198,7 +203,10 @@
                     @endforeach
                 </tbody>
             </table>
+
+             <!-- Pagination -->
             <div id="transaksi">{{ $data->links() }}</div>
+
         </div>
     </div>
 
