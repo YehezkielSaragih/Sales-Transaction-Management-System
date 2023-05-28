@@ -10,22 +10,67 @@ use App\Models\DetailTransaksi;
 class TransaksiController extends Controller
 {
     //
-    public function index(Request $request){
+    // public function index(Request $request){
 
+    //     // Sort query
+    //     $sortField = $request->input('sort_field', 'id_transaksi');
+    //     $sortOrder = $request->input('sort_order', 'asc');
+        
+    //     // Sort amd Pagination
+    //     $data = Transaksi::orderBy($sortField, $sortOrder)->paginate(10);
+    //     $data->appends([
+    //         'sort_field' => $sortField,
+    //         'sort_order' => $sortOrder,
+    //     ]);
+    
+    //     // Return view
+    //     return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder'));
+    // }
+
+    public function index(Request $request)
+    {
         // Sort query
         $sortField = $request->input('sort_field', 'id_transaksi');
         $sortOrder = $request->input('sort_order', 'asc');
+
+        // Get the query builder instance
+        $query = Transaksi::query();
+
+        // Apply filtering by date
+        if ($request->filled('tanggal_mulai')) {
+            $tanggalMulai = $request->input('tanggal_mulai');
+            $query->where('tanggal', '>=', $tanggalMulai);
+        }
         
-        // Sort amd Pagination
-        $data = Transaksi::orderBy($sortField, $sortOrder)->paginate(10);
+        if ($request->filled('tanggal_akhir')) {
+            $tanggalAkhir = $request->input('tanggal_akhir');
+            $query->where('tanggal', '<=', $tanggalAkhir);
+        }
+        
+
+        // Apply sorting
+        $query->orderBy($sortField, $sortOrder);
+
+        // Paginate the results
+        $data = $query->paginate(10);
+
+        // Append query parameters to pagination links
         $data->appends([
             'sort_field' => $sortField,
             'sort_order' => $sortOrder,
+            'tanggal_mulai' => $request->input('tanggal_mulai'),
+            'tanggal_akhir' => $request->input('tanggal_akhir'),
         ]);
-    
+
+        // Pass the start and end dates to the view
+        $startDate = $request->input('tanggal_mulai');
+        $endDate = $request->input('tanggal_akhir');
+
         // Return view
-        return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder'));
+        return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder', 'startDate', 'endDate'));
     }
+
+
 
     public function create(Request $request){
         // Validate the request
