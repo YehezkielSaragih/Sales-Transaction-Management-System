@@ -35,6 +35,13 @@ class DetailTransaksiController extends Controller
         
         // Sort and Paginate
         $data = $data->orderBy($sortField, $sortOrder)->paginate(10);
+        $data->appends([
+            'sort_field' => $sortField,
+            'sort_order' => $sortOrder,
+            'nama_barang' => $request->input('nama_barang'),
+            'range_harga_min' => $request->input('range_harga_min'),
+            'range_harga_max' => $request->input('range_harga_max')
+        ]);
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $rangeQueryMin = $request->input('range_harga_min');

@@ -10,11 +10,18 @@ class KategoriController extends Controller
 {
     //
     public function index(Request $request){
+
         // Sort query
         $sortField = $request->input('sort_field', 'id_kategori');
         $sortOrder = $request->input('sort_order', 'asc');
-        // Data
+
+        // Sort and Paginate
         $data = Kategori::orderBy($sortField, $sortOrder)->paginate(10);
+        $data->appends([
+            'sort_field' => $sortField,
+            'sort_order' => $sortOrder,
+        ]);
+
         // Return view
         return view('kategori.kategori_table', compact('data', 'sortField', 'sortOrder'));
     }

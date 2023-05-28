@@ -11,11 +11,18 @@ class TransaksiController extends Controller
 {
     //
     public function index(Request $request){
+
         // Sort query
         $sortField = $request->input('sort_field', 'id_transaksi');
         $sortOrder = $request->input('sort_order', 'asc');
-        // Data
+        
+        // Sort amd Pagination
         $data = Transaksi::orderBy($sortField, $sortOrder)->paginate(10);
+        $data->appends([
+            'sort_field' => $sortField,
+            'sort_order' => $sortOrder,
+        ]);
+    
         // Return view
         return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder'));
     }
