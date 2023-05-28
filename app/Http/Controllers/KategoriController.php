@@ -9,11 +9,15 @@ use App\Models\Kategori;
 class KategoriController extends Controller
 {
     //
-    public function index() {
-        $data = Kategori::orderBy('id_kategori')->paginate(10);
-        return view('kategori.kategori_table', compact('data'));
-        // return $data;
+    public function index(Request $request){
+        $sortField = $request->input('sort_field', 'id_kategori');
+        $sortOrder = $request->input('sort_order', 'asc');
+
+        $data = Kategori::orderBy($sortField, $sortOrder)->paginate(10);
+
+        return view('kategori.kategori_table', compact('data', 'sortField', 'sortOrder'));
     }
+
 
     public function create(Request $request){
         // Validate the request

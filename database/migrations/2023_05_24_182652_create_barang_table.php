@@ -24,7 +24,7 @@ return new class extends Migration
             // Column Setup
             $table->unsignedBigInteger('id_barang', 8)->autoIncrement()->primary();
             $table->unsignedBigInteger('id_kategori', 8)->nullable(false);
-            $table->string('nama_barang', 100)->nullable(false);
+            $table->string('nama_barang', 100)->unique()->nullable(false);
             $table->unsignedBigInteger('harga_barang', 10)->nullable(false);
             $table->timestamps();
             // Table relation

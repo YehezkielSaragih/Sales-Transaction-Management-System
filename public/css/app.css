@@ -2,9 +2,11 @@
     padding: 10px;
 }
 
-/* body{
-    background-image: url("/images/...");
-} */
+#authpage{
+    height: 100vh;
+    background: #7B3EFF;
+    background: linear-gradient(to bottom, #7B3EFF, #24A5D9);
+}
 
 .nav-item{
     transition: all;
@@ -30,6 +32,17 @@
     margin-bottom: 10px;
 }
 
+.column-header{
+    cursor: pointer; 
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+.sort-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
 #transaksi{
     width: 40%;
     margin-left: 15px;
@@ -46,6 +59,6 @@
 }
 
 #kategori{
-    width: 35%;    
+    width: 45%;    
     margin-left: 15px;
 }

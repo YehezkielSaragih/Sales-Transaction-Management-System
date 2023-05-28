@@ -81,8 +81,32 @@
             <table class="table table-bordered table-striped mt-3" id="kategori">
                 <thead>                        
                     <tr>
-                        <th>ID Kategori</th>
-                        <th>Nama Kategori</th>
+                        <th>
+                            <div class="column-header">
+                                <div>ID Kategori</div>
+                                <div>
+                                    <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'id_kategori', 'sort_order' => 'asc']) }}">
+                                        <i class="fa fa-arrow-up{{ $sortField === 'id_kategori' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                    </a>
+                                    <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'id_kategori', 'sort_order' => 'desc']) }}">
+                                        <i class="fa fa-arrow-down{{ $sortField === 'id_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="column-header">
+                                <div>Nama Kategori</div>
+                                <div>
+                                    <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'nama_kategori', 'sort_order' => 'asc']) }}">
+                                        <i class="fa fa-arrow-up{{ $sortField === 'nama_kategori' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                    </a>
+                                    <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'nama_kategori', 'sort_order' => 'desc']) }}">
+                                        <i class="fa fa-arrow-down{{ $sortField === 'nama_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
                         <th>Modify</th>
                     </tr>
                 </thead>
@@ -114,6 +138,7 @@
 
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0b159b0f50.js" crossorigin="anonymous"></script>
 
 </body>
 
