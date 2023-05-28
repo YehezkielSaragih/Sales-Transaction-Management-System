@@ -10,12 +10,36 @@ use App\Models\Barang;
 class DetailTransaksiController extends Controller
 {
     //
-    public function index(){
+    public function index(Request $request){
         $data = DetailTransaksi::join('barang', 'detail_transaksi.id_barang', '=', 'barang.id_barang')
         ->select('detail_transaksi.id_transaksi', 'detail_transaksi.id_detail_transaksi', 'barang.nama_barang', 'detail_transaksi.jumlah_barang', 'detail_transaksi.harga_barang_transaksi')
-        ->orderBy('id_detail_transaksi', 'asc')
-        ->paginate(10);
-        return view('detail_transaksi.detail_transaksi_table', compact('data'));
+        ->orderBy('id_detail_transaksi', 'asc');
+        
+        if($request->has('nama_barang'))
+        {
+            $data = $data->where('barang.nama_barang','LIKE',"%".$request->input('nama_barang')."%");
+        }
+
+        //Minimum
+        if($request->filled('range_harga_min'))
+        {
+            $range_harga = (float)$request->input('range_harga_min');
+            $data = $data->where('detail_transaksi.harga_barang_transaksi',">=",$range_harga);
+        }
+        
+        //Maximum
+        if($request->filled('range_harga_max'))
+        {
+            $range_harga = (float)$request->input('range_harga_max');
+            $data = $data->where('detail_transaksi.harga_barang_transaksi',"<=",$range_harga);
+        }
+
+        $data = $data->paginate(10);
+        $searchQuery = $request->input('nama_barang');
+        $rangeQueryMin = $request->input('range_harga_min');
+        $rangeQueryMax = $request-> input('range_harga_max');
+
+        return view('detail_transaksi.detail_transaksi_table', compact('data','searchQuery','rangeQueryMin','rangeQueryMax'));
         //return $data;
     }
 

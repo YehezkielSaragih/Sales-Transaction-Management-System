@@ -94,6 +94,36 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Detail Transaksi</div>
+            <!-- Search Bar -->
+            <form action="{{ route('detail_transaksi.index') }}" method="GET">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <strong>
+                                <label>Nama Barang</label>
+                            </strong>                            
+                            <input type="text" class="form-control" placeholder="Search" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
+                        </div>          
+                        <div class="col-md-3">
+                            <strong>
+                                <label>Range Harga Minimum</label>
+                            </strong>                            
+                            <input type="number" class="form-control" placeholder="Minimum Price" name="range_harga_min" value="{{ $rangeQuery ?? '' }}" min="0">                            
+                        </div> 
+                        <div class="col-md-3">
+                            <strong>
+                                <label>Range Harga Maximum</label>
+                            </strong>                            
+                            <input type="number" class="form-control" placeholder="Maximum Price" name="range_harga_max" value="{{ $rangeQuery ?? '' }}" min="0">                            
+                        </div> 
+                        <div class="col-md-3 search-button-container mt-4 ml-1">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>     
+                    </div>
+                </div>
+            </form>
+            <!-- Table -->
+
             <table class="table table-bordered mt-3" id="detail_transaksi">
                 <thead>
                     <tr>
