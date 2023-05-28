@@ -117,7 +117,7 @@
                             <input type="number" class="form-control" placeholder="Tertinggi" name="range_harga_max" value="{{ $rangeQueryMax ?? '' }}" min="0">                            
                         </div> 
                         <div class="col-md-3 search-button-container mt-4 ml-1">
-                            <button type="submit" class="btn btn-primary">Search</button>
+                            <button type="submit" class="btn btn-primary">Cari</button>
                         </div>     
                     </div>
                 </div>
