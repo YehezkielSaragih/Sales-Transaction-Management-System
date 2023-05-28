@@ -70,7 +70,7 @@
                         <input type="text" class="form-control" placeholder="Nama Barang" name="nama_barang" required>
                         <label>Harga Barang</label>
                         <input type="number" class="form-control" placeholder="Harga Barang" name="harga_barang" required>
-                        <button class="btn btn-success">Tambah</button>
+                        <button class="btn btn-success">Submit</button>
                     </form>
                 </li>
             </ul>

@@ -66,7 +66,7 @@
                         @csrf
                         <label>Kategori</label>
                         <input type="text" class="form-control" placeholder="Nama Kategori" name="nama_kategori" required>
-                        <button type="submit" class="btn btn-success">Tambah</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </li>
             </ul>

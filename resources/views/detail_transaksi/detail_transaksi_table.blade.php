@@ -83,7 +83,7 @@
                         </div>
                         <button type="button" class="btn btn-primary" onclick="addField()">Add Another</button>
                         <!-- Submit Button -->
-                        <button type="submit" class="btn btn-success">Tambah</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
                     </form>
                 </li>
             </ul>
