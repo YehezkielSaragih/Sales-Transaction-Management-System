@@ -93,6 +93,33 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Transaksi</div>
+            <!--Select-->
+            <form action="{{ route('transaksi.index') }}" method="GET">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <strong>
+                                    <label for="tanggal">Tanggal Mulai Transaksi</label>
+                                </strong>                                    
+                                <input type="date" class="form-control" id="tanggal" name="tanggal_mulai" value="startDate" >
+                            </div>
+                        </div>   
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <strong>
+                                    <label for="tanggal">Tanggal Akhir Transaksi</label>
+                                </strong>                                    
+                                <input type="date" class="form-control" id="tanggal" name="tanggal_akhir" value="endDate" >
+                            </div>
+                        </div>   
+                        <div class="col-md-3 search-button-container mt-4 ml-1">
+                            <button type="submit" class="btn btn-primary">Cari</button>
+                        </div>                           
+                    </div>
+                </div>
+            </form>
+            <!--Table-->
             <table class="table table-bordered table-striped mt-3" id="transaksi">
                 <thead>
                     <tr>
@@ -142,7 +169,7 @@
                     @foreach($data as $row)
                         <tr>
                             <td>{{ $row['id_transaksi'] }}</td>
-                            <td>{{ $row['tanggal'] }}</td>
+                            <td>{{ date('m/d/Y', strtotime($row['tanggal'])) }}</td>
                             <td>Rp {{ $row['total_transaksi'] }}</td>
                             <td class="d-flex">   
                                 <!-- Edit function redirect to /barang/barang_edit -->
