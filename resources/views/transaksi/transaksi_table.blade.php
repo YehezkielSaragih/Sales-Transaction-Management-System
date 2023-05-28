@@ -107,7 +107,7 @@
                         <tr>
                             <td>{{ $row['id_transaksi'] }}</td>
                             <td>{{ $row['tanggal'] }}</td>
-                            <td>{{ $row['total_transaksi'] }}</td>
+                            <td>Rp {{ $row['total_transaksi'] }}</td>
                             <td class="d-flex">   
                                 <!-- Edit function redirect to /barang/barang_edit -->
                                 <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">

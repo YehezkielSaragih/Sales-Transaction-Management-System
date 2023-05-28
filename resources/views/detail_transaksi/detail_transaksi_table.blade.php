@@ -219,7 +219,7 @@
                                 <td>{{ $row['id_detail_transaksi'] }}</td>
                                 <td>{{ $row['nama_barang'] }}</td>
                                 <td>{{ $row['jumlah_barang'] }}</td>
-                                <td>{{ $row['harga_barang_transaksi'] }}</td>
+                                <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
                                 <td class="d-flex">   
                                     <!-- Edit function redirect to /barang/barang_edit -->
                                     <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
@@ -241,7 +241,7 @@
                                 <td>{{ $row['id_detail_transaksi'] }}</td>
                                 <td>{{ $row['nama_barang'] }}</td>
                                 <td>{{ $row['jumlah_barang'] }}</td>
-                                <td>{{ $row['harga_barang_transaksi'] }}</td>
+                                <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
                                 <td class="d-flex">   
                                     <!-- Edit function redirect to /barang/barang_edit -->
                                     <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
