@@ -19,29 +19,33 @@ class BarangController extends Controller
     // }
 
     public function index(Request $request)
-    {
+    {      
         $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
             ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
             ->orderBy('barang.id_barang', 'asc');
 
         $data2 = Kategori::orderBy('id_kategori')->paginate(10);
 
-        if ($request->has('nama_barang')) 
-        {
+        if ($request->has('nama_barang')) {
             $data = $data->where('nama_barang', 'LIKE', "%" . $request->input('nama_barang') . "%");
         }
-
-        if ($request->has('kategori_barang')) 
-        {
+        
+        if ($request->filled('kategori_barang')) {
             $data = $data->where('kategori.nama_kategori', $request->input('kategori_barang'));
-        }
+        }           
+        
+        if ($request->filled('range_harga')) {
+            $rangeHarga = (float) $request->input('range_harga');
+            $data = $data->where('barang.harga_barang', '<', $rangeHarga);
+        }      
 
         $data = $data->paginate(10);
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $selectedKategori = $request->input('kategori_barang');
+        $rangeQuery = $request->input('range_harga');
 
-        return view('barang.barang_table', compact('data', 'searchQuery', 'selectedKategori','data2'));
+        return view('barang.barang_table', compact('data', 'searchQuery', 'selectedKategori','data2','rangeQuery'));
     }
 
     public function create(Request $request){

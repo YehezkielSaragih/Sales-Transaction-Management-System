@@ -85,13 +85,13 @@
             <form action="{{ route('barang.index') }}" method="GET">
                 <div class="card-body">
                     <div class="row align-items-center">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <strong>
                                 <label>Nama Barang</label>
                             </strong>                            
                             <input type="text" class="form-control" placeholder="Search" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
                         </div>             
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <strong>
                                 <label>Nama Kategori</label>
                             </strong>
@@ -101,7 +101,16 @@
                                     <option value="{{$row->nama_kategori}}" @if($selectedKategori == $row->nama_kategori) selected @endif>{{$row->nama_kategori}}</option>
                                 @endforeach
                             </select>
-                        </div>                    
+                        </div>   
+                        <div class="col-md-3">
+                            <strong>
+                                <label>Range Harga</label>
+                            </strong>                            
+                            <input type="number" class="form-control" placeholder="Minimum Price" name="range_harga" value="{{ $rangeQuery ?? '' }}" min="0">                            
+                        </div> 
+                        <div class="col-md-3 search-button-container mt-4 ml-1">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>     
                     </div>
                 </div>
             </form>
