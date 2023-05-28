@@ -96,9 +96,45 @@
             <table class="table table-bordered table-striped mt-3" id="transaksi">
                 <thead>
                     <tr>
-                        <th>ID Transaksi</th>
-                        <th>Tanggal</th>
-                        <th>Total Transaksi</th>
+                        <th>
+                            <div class="column-header">
+                                <div>ID Transaksi</div>
+                                <div>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'asc']) }}">
+                                        <i class="fa fa-arrow-up{{ $sortField === 'id_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                    </a>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'desc']) }}">
+                                        <i class="fa fa-arrow-down{{ $sortField === 'id_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="column-header">
+                                <div>Tanggal</div>
+                                <div>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'asc']) }}">
+                                        <i class="fa fa-arrow-up{{ $sortField === 'tanggal' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                    </a>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'desc']) }}">
+                                        <i class="fa fa-arrow-down{{ $sortField === 'tanggal' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="column-header">
+                                <div>Total Transaksi</div>
+                                <div>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'asc']) }}">
+                                        <i class="fa fa-arrow-up{{ $sortField === 'total_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                    </a>
+                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'desc']) }}">
+                                        <i class="fa fa-arrow-down{{ $sortField === 'total_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </th>
                         <th>Modify</th>
                     </tr>
                 </thead>
@@ -132,6 +168,7 @@
     <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('js/dynamic_form.js') }}"></script>
+    <script src="https://kit.fontawesome.com/0b159b0f50.js" crossorigin="anonymous"></script>
 
 </body>
 

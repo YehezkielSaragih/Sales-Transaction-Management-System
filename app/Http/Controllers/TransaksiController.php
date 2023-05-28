@@ -10,10 +10,14 @@ use App\Models\DetailTransaksi;
 class TransaksiController extends Controller
 {
     //
-    public function index(){
-        $data = Transaksi::paginate(10);
-        return view('transaksi.transaksi_table', compact('data'));
-        // return $data;
+    public function index(Request $request){
+        // Sort query
+        $sortField = $request->input('sort_field', 'id_transaksi');
+        $sortOrder = $request->input('sort_order', 'asc');
+        // Data
+        $data = Transaksi::orderBy($sortField, $sortOrder)->paginate(10);
+        // Return view
+        return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder'));
     }
 
     public function create(Request $request){
@@ -56,7 +60,6 @@ class TransaksiController extends Controller
         ];
         $transaksi = Transaksi::create($dataTransaksi);
         $idTransaksi = $transaksi->id_transaksi;
-        // return $idTransaksi;
         // Create data and detail transaksi record
         foreach ($namaBarangInputs as $index => $namaBarang) {
             $dataDetailTransaksi = [
