@@ -14,4 +14,5 @@ class Transaksi extends Model
         'tanggal',
         'total_transaksi'
     ];
+    public $sortable = ['id_transaksi', 'tanggal', 'total_transaksi'];
 }

@@ -8,7 +8,8 @@ use App\Models\Kategori;
 
 class BarangController extends Controller{
 
-    public function index(Request $request){      
+    public function index(Request $request){   
+
         // Data
         $dataBarang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
         ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang');
@@ -16,6 +17,7 @@ class BarangController extends Controller{
         // Sort query
         $sortField = $request->input('sort_field', 'barang.id_barang');
         $sortOrder = $request->input('sort_order', 'asc');
+
         // Search query
         if ($request->has('nama_barang')) {
             $dataBarang = $dataBarang->where('nama_barang', 'LIKE', "%" . $request->input('nama_barang') . "%");
@@ -27,17 +29,23 @@ class BarangController extends Controller{
             $rangeHarga = (float) $request->input('range_harga_min');
             $dataBarang = $dataBarang->where('barang.harga_barang', '>=', $rangeHarga);
         }      
+
         if ($request->filled('range_harga_max')) {
             $rangeHarga = (float) $request->input('range_harga_max');
             $dataBarang = $dataBarang->where('barang.harga_barang', '<=', $rangeHarga);
         } 
-        // Paginate
+
+        // Sort and Paginate
         $dataBarang = $dataBarang->orderBy($sortField, $sortOrder)->paginate(10);
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $selectedKategori = $request->input('kategori_barang');
+
         $rangeQueryMin = $request->input('range_harga_min');
         $rangeQueryMax = $request->input('range_harga_max');
+
+        $rangeQuery = $request->input('range_harga');
+        
         // Return view
         return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder'));
     }

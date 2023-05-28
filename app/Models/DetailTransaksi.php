@@ -16,4 +16,5 @@ class DetailTransaksi extends Model
         'jumlah_barang',
         'harga_barang_transaksi'
     ];
+    public $sortable = ['id_detail_transaksi', 'id_transaksi', 'id_barang', 'jumlah_barang', 'harga_barang_transaksi'];
 }
