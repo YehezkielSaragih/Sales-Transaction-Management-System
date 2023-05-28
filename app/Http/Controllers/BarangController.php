@@ -20,6 +20,7 @@ class BarangController extends Controller
 
     public function index(Request $request)
     {      
+        
         $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
             ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
             ->orderBy('barang.id_barang', 'asc');
@@ -36,8 +37,10 @@ class BarangController extends Controller
         
         if ($request->filled('range_harga')) {
             $rangeHarga = (float) $request->input('range_harga');
-            $data = $data->where('barang.harga_barang', '<', $rangeHarga);
+            $data = $data->where('barang.harga_barang', '<=', $rangeHarga);
         }      
+
+
 
         $data = $data->paginate(10);
         // Pass the search query back to the view
