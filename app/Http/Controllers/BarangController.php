@@ -6,49 +6,35 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Kategori;
 
-class BarangController extends Controller
-{
-    //
-    // public function index(){
-    //     $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
-    //     ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
-    //     ->orderBy('barang.id_barang', 'asc')
-    //     ->paginate(10);
-    //     $data2 = Kategori::orderBy('id_kategori')->paginate(10);
-    //     return view('barang.barang_table', compact('data','data2'));        
-    // }
+class BarangController extends Controller{
 
-    public function index(Request $request)
-    {      
-        
-        $data = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
-            ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang')
-            ->orderBy('barang.id_barang', 'asc');
-
-        $data2 = Kategori::orderBy('id_kategori')->paginate(10);
-
+    public function index(Request $request){      
+        // Data
+        $dataBarang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
+        ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang');
+        $dataKategori = Kategori::orderBy('id_kategori')->paginate(10);
+        // Sort query
+        $sortField = $request->input('sort_field', 'barang.id_barang');
+        $sortOrder = $request->input('sort_order', 'asc');
+        // Search query
         if ($request->has('nama_barang')) {
-            $data = $data->where('nama_barang', 'LIKE', "%" . $request->input('nama_barang') . "%");
+            $dataBarang = $dataBarang->where('nama_barang', 'LIKE', "%" . $request->input('nama_barang') . "%");
         }
-        
         if ($request->filled('kategori_barang')) {
-            $data = $data->where('kategori.nama_kategori', $request->input('kategori_barang'));
+            $dataBarang = $dataBarang->where('kategori.nama_kategori', $request->input('kategori_barang'));
         }           
-        
         if ($request->filled('range_harga')) {
             $rangeHarga = (float) $request->input('range_harga');
-            $data = $data->where('barang.harga_barang', '<=', $rangeHarga);
+            $dataBarang = $dataBarang->where('barang.harga_barang', '<=', $rangeHarga);
         }      
-
-
-
-        $data = $data->paginate(10);
+        // Paginate
+        $dataBarang = $dataBarang->orderBy($sortField, $sortOrder)->paginate(10);
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $selectedKategori = $request->input('kategori_barang');
         $rangeQuery = $request->input('range_harga');
-
-        return view('barang.barang_table', compact('data', 'searchQuery', 'selectedKategori','data2','rangeQuery'));
+        // Return view
+        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQuery', 'sortField', 'sortOrder'));
     }
 
     public function create(Request $request){

@@ -15,6 +15,7 @@ class Barang extends Model
         'nama_barang',
         'harga_barang'
     ];
+    public $sortable = ['id_barang', 'nama_barang', 'harga_barang'];
     public function isBeingUsed(){
         // Check if the category is being referenced in the 'detail_transaksi' table
         return DetailTransaksi::where('id_barang', $this->id_barang)->exists();
