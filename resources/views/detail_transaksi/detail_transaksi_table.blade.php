@@ -108,13 +108,13 @@
                             <strong>
                                 <label>Range Harga Minimum</label>
                             </strong>                            
-                            <input type="number" class="form-control" placeholder="Minimum Price" name="range_harga_min" value="{{ $rangeQueryMin ?? '' }}" min="0">                            
+                            <input type="number" class="form-control" placeholder="Terendah" name="range_harga_min" value="{{ $rangeQueryMin ?? '' }}" min="0">                            
                         </div> 
                         <div class="col-md-3">
                             <strong>
                                 <label>Range Harga Maximum</label>
                             </strong>                            
-                            <input type="number" class="form-control" placeholder="Maximum Price" name="range_harga_max" value="{{ $rangeQueryMax ?? '' }}" min="0">                            
+                            <input type="number" class="form-control" placeholder="Tertinggi" name="range_harga_max" value="{{ $rangeQueryMax ?? '' }}" min="0">                            
                         </div> 
                         <div class="col-md-3 search-button-container mt-4 ml-1">
                             <button type="submit" class="btn btn-primary">Search</button>
