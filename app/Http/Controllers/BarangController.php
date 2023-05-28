@@ -40,10 +40,8 @@ class BarangController extends Controller{
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $selectedKategori = $request->input('kategori_barang');
-
         $rangeQueryMin = $request->input('range_harga_min');
         $rangeQueryMax = $request->input('range_harga_max');
-
         $rangeQuery = $request->input('range_harga');
         
         // Return view

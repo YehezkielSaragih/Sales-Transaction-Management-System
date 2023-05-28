@@ -123,7 +123,6 @@
                 </div>
             </form>
             <!-- Table -->
-
             <table class="table table-bordered" id="detail_transaksi">
                 <thead>
                     <tr>
