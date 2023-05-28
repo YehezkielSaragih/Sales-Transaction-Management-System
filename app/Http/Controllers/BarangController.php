@@ -14,9 +14,11 @@ class BarangController extends Controller{
         $dataBarang = Barang::join('kategori', 'barang.id_kategori', '=', 'kategori.id_kategori')
         ->select('barang.id_barang', 'kategori.nama_kategori', 'barang.nama_barang', 'barang.harga_barang');
         $dataKategori = Kategori::orderBy('id_kategori')->paginate(10);
-        // Sort query
+
+        // Sort and paginate query
         $sortField = $request->input('sort_field', 'barang.id_barang');
         $sortOrder = $request->input('sort_order', 'asc');
+        $pageSize = $request->input('page_size', 10);
 
         // Search query
         if ($request->has('nama_barang')) {
@@ -29,17 +31,17 @@ class BarangController extends Controller{
             $rangeHarga = (float) $request->input('range_harga_min');
             $dataBarang = $dataBarang->where('barang.harga_barang', '>=', $rangeHarga);
         }      
-
         if ($request->filled('range_harga_max')) {
             $rangeHarga = (float) $request->input('range_harga_max');
             $dataBarang = $dataBarang->where('barang.harga_barang', '<=', $rangeHarga);
         } 
 
-        // Sort and Paginate
-        $dataBarang = $dataBarang->orderBy($sortField, $sortOrder)->paginate(10);
+        // Sort and paginate
+        $dataBarang = $dataBarang->orderBy($sortField, $sortOrder)->paginate($pageSize);
         $dataBarang->appends([
             'sort_field' => $sortField,
             'sort_order' => $sortOrder,
+            'pageSize' => $pageSize,
             'nama_barang' => $request->input('nama_barang'),
             'kategori_barang' => $request->input('kategori_barang'),
             'range_harga_min' => $request->input('range_harga_min'),
@@ -53,7 +55,7 @@ class BarangController extends Controller{
         $rangeQuery = $request->input('range_harga');
         
         // Return view
-        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder'));
+        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder', 'pageSize'));
     }
 
     public function create(Request $request){

@@ -77,6 +77,16 @@
     <div class="container">
         <div class="card">
             <div class="card-header">Tabel Data Kategori</div>
+            <!-- Pagination -->
+            <form action="{{ route('kategori.index') }}" method="GET" id="kategori" class="mt-3">
+                <label for="page_size">Show :</label>
+                <select name="page_size" id="page_size" onchange="this.form.submit()">
+                    <option value="10" {{ $pageSize == 10 ? 'selected' : '' }}>10</option>
+                    <option value="15" {{ $pageSize == 15 ? 'selected' : '' }}>15</option>
+                    <option value="20" {{ $pageSize == 20 ? 'selected' : '' }}>20</option>
+                    <option value="25" {{ $pageSize == 25 ? 'selected' : '' }}>25</option>
+                </select>
+            </form>
             <!-- Table -->
             <table class="table table-bordered table-striped mt-3" id="kategori">
                 <thead>                        
@@ -132,6 +142,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <!-- Pagination -->
             <div id="kategori">{{ $data->links() }}</div>
         </div>
     </div>
