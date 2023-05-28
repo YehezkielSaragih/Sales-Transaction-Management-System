@@ -23,18 +23,23 @@ class BarangController extends Controller{
         if ($request->filled('kategori_barang')) {
             $dataBarang = $dataBarang->where('kategori.nama_kategori', $request->input('kategori_barang'));
         }           
-        if ($request->filled('range_harga')) {
-            $rangeHarga = (float) $request->input('range_harga');
-            $dataBarang = $dataBarang->where('barang.harga_barang', '<=', $rangeHarga);
+        if ($request->filled('range_harga_min')) {
+            $rangeHarga = (float) $request->input('range_harga_min');
+            $dataBarang = $dataBarang->where('barang.harga_barang', '>=', $rangeHarga);
         }      
+        if ($request->filled('range_harga_max')) {
+            $rangeHarga = (float) $request->input('range_harga_max');
+            $dataBarang = $dataBarang->where('barang.harga_barang', '<=', $rangeHarga);
+        } 
         // Paginate
         $dataBarang = $dataBarang->orderBy($sortField, $sortOrder)->paginate(10);
         // Pass the search query back to the view
         $searchQuery = $request->input('nama_barang');
         $selectedKategori = $request->input('kategori_barang');
-        $rangeQuery = $request->input('range_harga');
+        $rangeQueryMin = $request->input('range_harga_min');
+        $rangeQueryMax = $request->input('range_harga_max');
         // Return view
-        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQuery', 'sortField', 'sortOrder'));
+        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder'));
     }
 
     public function create(Request $request){
