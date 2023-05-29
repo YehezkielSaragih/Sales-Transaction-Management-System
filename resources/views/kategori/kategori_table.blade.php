@@ -132,7 +132,7 @@
                                 <!-- Edit function redirect to /kategori/kategori_edit -->
                                 <form action="{{ route('kategori.edit', $row['id_kategori']) }}" method="POST" class="me-2">
                                     @csrf
-                                    <button name="edit" class="btn btn-primary">Edit</button>
+                                    <button name="edit" class="btn btn-warning">Edit</button>
                                 </form>
                                 <!-- Delete function redirect back to /kategori/kategori_table -->
                                 <form action="{{ route('kategori.delete', $row['id_kategori']) }}" method="POST">

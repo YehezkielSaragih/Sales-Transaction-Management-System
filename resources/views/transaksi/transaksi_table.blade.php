@@ -190,7 +190,7 @@
                                 <!-- Edit function redirect to /transaksi/transaksi_edit -->
                                 <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">
                                     @csrf
-                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-warning">Edit</button>
                                 </form>
                                 <!-- Delete function redirect back to /transaksi/transaksi_table -->
                                 <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">

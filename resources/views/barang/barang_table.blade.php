@@ -204,7 +204,7 @@
                                 <!-- Edit function redirect to /barang/barang_edit -->
                                 <form action="{{ route('barang.edit', $row['id_barang']) }}" method="POST" class="me-2">
                                     @csrf
-                                    <button class="btn btn-primary">Edit</button>
+                                    <button class="btn btn-warning">Edit</button>
                                 </form>
                                 <!-- Delete function redirect back to /barang/barang_table -->
                                 <form action="{{ route('barang.delete', $row['id_barang']) }}" method="POST">
