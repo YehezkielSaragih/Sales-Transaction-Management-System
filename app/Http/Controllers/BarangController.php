@@ -67,6 +67,12 @@ class BarangController extends Controller{
             'harga_barang' => 'required',
         ]);
 
+        // Check
+        if(Barang::where('nama_barang', $request->nama_barang)->exists()){
+            $errorMessage = 'Nama barang sudah ada.';
+            return redirect()->back()->with('error', $errorMessage);
+        }
+
         // Search for the kategori based on the nama_kategori
         $kategori = KATEGORI::where('nama_kategori', $request->nama_kategori)->first();
         // If kategori not found, return error message

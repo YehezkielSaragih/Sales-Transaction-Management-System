@@ -35,6 +35,12 @@ class KategoriController extends Controller{
             'nama_kategori' => 'required'
         ]);
 
+        // Check
+        if(Kategori::where('nama_kategori', $request->nama_kategori)->exists()){
+            $errorMessage = 'Kategori sudah ada.';
+            return redirect()->back()->with('error', $errorMessage);
+        }
+
         // Save the data
         $data = [
             'nama_kategori' => $request->nama_kategori
