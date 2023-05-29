@@ -14,14 +14,17 @@ class AuthController extends Controller{
     }
  
     public function registerPost(Request $request){
+        // Same email error
+        if (User::where('email', $request->email)->exists()) {
+            return redirect()->back()->with('error', 'Email already exists');
+        }
+        // Save data
         $user = new User();
- 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
- 
         $user->save();
- 
+        // Return 
         return redirect()->route('login')->with('success', 'Register successfully');
     }
  
