@@ -22,7 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Navbar Content -->
-            <div class="collapse navbar-collapse justify-content-between"" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <!-- Transaksi -->
                     <a class="nav-item nav-link" href="/transaksi/transaksi_table">Transaksi</a>

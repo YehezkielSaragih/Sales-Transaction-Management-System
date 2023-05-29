@@ -91,14 +91,14 @@
                             <strong>
                                 <label>Nama Barang</label>
                             </strong>                            
-                            <input type="text" class="form-control" placeholder="Search" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
+                            <input type="text" class="form-control" placeholder="Cari" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
                         </div>             
                         <div class="col-md-2">
                             <strong>
                                 <label>Nama Kategori</label>
                             </strong>
                             <select id="filter-kategori" class="form-control" name = "kategori_barang">
-                                <option value="">Select Kategori</option>
+                                <option value="">Pilih Kategori</option>
                                 @foreach($dataKategori as $row)
                                     <option value="{{$row->nama_kategori}}" @if($selectedKategori == $row->nama_kategori) selected @endif>{{$row->nama_kategori}}</option>
                                 @endforeach
@@ -117,7 +117,7 @@
                             <input type="number" class="form-control" placeholder="Tertinggi" name="range_harga_max" value="{{ $rangeQueryMax ?? '' }}" min="0">                            
                         </div> 
                         <div class="col-md-4 search-button-container mt-4 ml-1">
-                            <button type="submit" class="btn btn-primary">Cari</button>
+                            <button type="submit" class="btn btn-primary">Search</button>
                         </div>     
                     </div>
                 </div>

@@ -104,7 +104,7 @@
                             <strong>
                                 <label>Nama Barang</label>
                             </strong>                            
-                            <input type="text" class="form-control" placeholder="Search" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
+                            <input type="text" class="form-control" placeholder="Cari" name="nama_barang" value="{{ $searchQuery ?? '' }}">                            
                         </div>          
                         <div class="col-md-3">
                             <strong>
@@ -119,7 +119,7 @@
                             <input type="number" class="form-control" placeholder="Tertinggi" name="range_harga_max" value="{{ $rangeQueryMax ?? '' }}" min="0">                            
                         </div> 
                         <div class="col-md-3 search-button-container mt-4 ml-1">
-                            <button type="submit" class="btn btn-primary">Cari</button>
+                            <button type="submit" class="btn btn-primary">Search</button>
                         </div>     
                     </div>
                 </div>
@@ -238,7 +238,7 @@
                                     <!-- Edit function redirect to /barang/barang_edit -->
                                     <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
                                         @csrf
-                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Edit</button>
                                     </form>
                                     <!-- Delete function redirect back to /barang/barang_table -->
                                     <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
@@ -260,7 +260,7 @@
                                     <!-- Edit function redirect to /barang/barang_edit -->
                                     <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
                                         @csrf
-                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Edit</button>
                                     </form>
                                     <!-- Delete function redirect back to /barang/barang_table -->
                                     <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">

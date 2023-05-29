@@ -35,7 +35,7 @@ class DetailTransaksiController extends Controller
         }
         
         // Sort and Paginate
-        $data = $data->orderBy($sortField, $sortOrder)->paginate(10);
+        $data = $data->orderBy($sortField, $sortOrder)->paginate($pageSize);
         $data->appends([
             'sort_field' => $sortField,
             'sort_order' => $sortOrder,
