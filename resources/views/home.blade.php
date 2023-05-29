@@ -54,14 +54,18 @@
             <div class="card mt-3" id="homeinfo">
                 <div class="card-header">Transaksi {{ $today }}</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Terjadi {{ $transaksiCount }} transaksi</li>
-                    <li class="list-group-item">Total transaksi mencapai Rp {{ $totalTransaksi }} </li>
+                    <li class="list-group-item">Terjadi {{ $transaksiCount }} transaksi pada hari ini</li>
+                    <li class="list-group-item">Total transaksi pada hari ini mencapai Rp {{ $totalTransaksi }} </li>
+                    @if ($mostSoldBarangToday != 'Tidak ada')
+                        <li class="list-group-item">{{ $mostSoldBarangToday }} adalah barang yang paling banyak terjual pada hari ini</li>
+                    @endif
                 </ul>
             </div>
             <div class="card mt-3" id="homeinfo">
                 <div class="card-header">Barang</div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Terdapat {{ $barangCount }} jenis barang yang tersedia</li>
+                    <li class="list-group-item">{{ $mostSoldBarang }} adalah barang yang paling banyak terjual</li>
                 </ul>
             </div>
             <div class="card mt-3" id="homeinfo">
