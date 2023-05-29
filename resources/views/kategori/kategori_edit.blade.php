@@ -50,7 +50,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <!-- Update function redirect back to /kategori/kategori_table -->
-                    <form action="{{ route('kategori.update', ['id' => $editId]) }}" method="POST">
+                    <form action="{{ route('kategori.update', ['id' => $edit->id_kategori]) }}" method="POST">
                         @csrf 
                         @method('PUT')
                         <label>Kategori</label>

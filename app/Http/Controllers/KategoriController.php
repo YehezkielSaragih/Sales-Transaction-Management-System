@@ -55,12 +55,9 @@ class KategoriController extends Controller{
 
     public function edit($id) {
 
-        // Avoiding pagination error
-        $data = Kategori::query();
-
-        // For form value
+        $data = Kategori::get();
         $edit = $data->where('id_kategori', $id)->first();
-        return view('kategori.kategori_edit', ['editId' => $id, 'edit' => $edit]);
+        return view('kategori.kategori_edit', compact('edit'));
     }
 
     public function update(Request $request, $id){
@@ -95,6 +92,6 @@ class KategoriController extends Controller{
         
         // Redirect to the index with success message
         $successMessage = 'Kategori berhasil dihapus.';
-        return back()->with('success', $successMessage);
+        return redirect()->back()->with('success', $successMessage);
     }
 }

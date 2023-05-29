@@ -99,7 +99,7 @@
                                 <div>ID Kategori</div>
                                 <div>
                                     <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'id_kategori', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'id_kategori' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                        <i class="fa fa-arrow-up{{ $sortField === 'id_kategori' && $sortOrder === 'asc' ? ' text-primary' : 'text-muted' }}"></i>
                                     </a>
                                     <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'id_kategori', 'sort_order' => 'desc']) }}">
                                         <i class="fa fa-arrow-down{{ $sortField === 'id_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
@@ -112,7 +112,7 @@
                                 <div>Nama Kategori</div>
                                 <div>
                                     <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'nama_kategori', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'nama_kategori' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                        <i class="fa fa-arrow-up{{ $sortField === 'nama_kategori' && $sortOrder === 'asc' ? ' text-primary' : 'text-muted' }}"></i>
                                     </a>
                                     <a class="sort-link" href="{{ route('kategori.index', ['sort_field' => 'nama_kategori', 'sort_order' => 'desc']) }}">
                                         <i class="fa fa-arrow-down{{ $sortField === 'nama_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>

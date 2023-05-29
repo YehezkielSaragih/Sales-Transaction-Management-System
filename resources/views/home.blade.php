@@ -50,7 +50,6 @@
 
     <!-- Main -->
     <div class="container mt-3">
-        <!-- <div class="row"> -->
             <div class="card mt-3" id="homeinfo">
                 <div class="card-header">Transaksi {{ $today }}</div>
                 <ul class="list-group list-group-flush">
@@ -74,7 +73,6 @@
                     <li class="list-group-item">Terdapat {{ $kategoriCount }} kategori barang yang tersedia</li>
                 </ul>
             </div>
-        <!-- </div> -->
     </div>
 
     <!-- Script -->

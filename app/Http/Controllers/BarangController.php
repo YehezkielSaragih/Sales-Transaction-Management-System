@@ -74,7 +74,7 @@ class BarangController extends Controller{
         }
 
         // Search for the kategori based on the nama_kategori
-        $kategori = KATEGORI::where('nama_kategori', $request->nama_kategori)->first();
+        $kategori = Kategori::where('nama_kategori', $request->nama_kategori)->first();
         // If kategori not found, return error message
         if (!$kategori) {
             $errorMessage = 'Nama kategori tidak valid.';
@@ -87,7 +87,7 @@ class BarangController extends Controller{
             'nama_barang' => $request->nama_barang,
             'harga_barang' => $request->harga_barang,
         ];
-        BARANG::create($data);
+        Barang::create($data);
 
         // Redirect to the index with success message
         $successMessage = 'Barang berhasil ditambahkan.';
@@ -116,7 +116,7 @@ class BarangController extends Controller{
         ]);
 
         // Search for the kategori based on the nama_kategori
-        $kategori = KATEGORI::where('nama_kategori', $request->nama_kategori)->first();
+        $kategori = Kategori::where('nama_kategori', $request->nama_kategori)->first();
         // If kategori not found, return error message
         if (!$kategori) {
             $errorMessage = 'Nama kategori tidak valid.';
