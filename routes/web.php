@@ -51,29 +51,29 @@ Route::group(['middleware' => 'auth'], function () {
     // Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Transaksi
-    Route::get('/transaksi/transaksi_table', [TransaksiController::class, 'index'])->name('transaksi.index');
-    Route::post('/transaksi/transaksi_table', [TransaksiController::class, 'create'])->name('transaksi.create');
-    Route::post('/transaksi/transaksi_table/{id}', [TransaksiController::class, 'edit'])->name('transaksi.edit');
-    Route::put('/transaksi/transaksi_table/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
-    Route::delete('/transaksi/transaksi_table/{id}', [TransaksiController::class, 'delete'])->name('transaksi.delete');
+    Route::get('/transaksi/table', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::post('/transaksi/table', [TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::post('/transaksi/edit/{id}', [TransaksiController::class, 'edit'])->name('transaksi.edit');
+    Route::put('/transaksi/edit/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
+    Route::delete('/transaksi/table/{id}', [TransaksiController::class, 'delete'])->name('transaksi.delete');
     // Detail Transaksi
-    Route::get('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi.index');
-    Route::post('/detail_transaksi/detail_transaksi_table', [DetailTransaksiController::class, 'create'])->name('detail_transaksi.create');
-    Route::post('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'edit'])->name('detail_transaksi.edit');
-    Route::put('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'update'])->name('detail_transaksi.update');
-    Route::delete('/detail_transaksi/detail_transaksi_table/{id}', [DetailTransaksiController::class, 'delete'])->name('detail_transaksi.delete');
+    Route::get('/detail_transaksi/table', [DetailTransaksiController::class, 'index'])->name('detail_transaksi.index');
+    Route::post('/detail_transaksi/table', [DetailTransaksiController::class, 'create'])->name('detail_transaksi.create');
+    Route::post('/detail_transaksi/edit/{id}', [DetailTransaksiController::class, 'edit'])->name('detail_transaksi.edit');
+    Route::put('/detail_transaksi/edit/{id}', [DetailTransaksiController::class, 'update'])->name('detail_transaksi.update');
+    Route::delete('/detail_transaksi/table/{id}', [DetailTransaksiController::class, 'delete'])->name('detail_transaksi.delete');
     // Barang
-    Route::get('/barang/barang_table', [BarangController::class, 'index'])->name('barang.index');
-    Route::post('/barang/barang_table', [BarangController::class, 'create'])->name('barang.create');
-    Route::post('/barang/barang_edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
-    Route::put('/barang/barang_edit/{id}', [BarangController::class, 'update'])->name('barang.update');
-    Route::delete('/barang/barang_table/{id}', [BarangController::class, 'delete'])->name('barang.delete');
+    Route::get('/barang/table', [BarangController::class, 'index'])->name('barang.index');
+    Route::post('/barang/table', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/edit/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/table/{id}', [BarangController::class, 'delete'])->name('barang.delete');
     // Kategori
-    Route::get('/kategori/kategori_table', [KategoriController::class, 'index'])->name('kategori.index');
-    Route::post('/kategori/kategori_table', [KategoriController::class, 'create'])->name('kategori.create');
-    Route::post('/kategori/kategori_edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
-    Route::put('/kategori/kategori_edit/{id}', [KategoriController::class, 'update'])->name('kategori.update');
-    Route::delete('/kategori/kategori_table/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
+    Route::get('/kategori/table', [KategoriController::class, 'index'])->name('kategori.index');
+    Route::post('/kategori/table', [KategoriController::class, 'create'])->name('kategori.create');
+    Route::post('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
+    Route::put('/kategori/edit/{id}', [KategoriController::class, 'update'])->name('kategori.update');
+    Route::delete('/kategori/table/{id}', [KategoriController::class, 'delete'])->name('kategori.delete');
     // Logout
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });

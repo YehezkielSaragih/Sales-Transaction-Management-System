@@ -48,7 +48,7 @@ class TransaksiController extends Controller{
         $endDate = $request->input('tanggal_akhir');
 
         // Return view
-        return view('transaksi.transaksi_table', compact('data', 'sortField', 'sortOrder', 'startDate', 'endDate', 'pageSize'));
+        return view('pages.transaksi.table', compact('data', 'sortField', 'sortOrder', 'startDate', 'endDate', 'pageSize'));
     }
 
     public function create(Request $request){
@@ -120,7 +120,7 @@ class TransaksiController extends Controller{
 
         // For form value
         $edit = $data->where('id_transaksi', $id)->first();
-        return view('transaksi.transaksi_edit', ['editId' => $id, 'edit' => $edit]);
+        return view('pages.transaksi.edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

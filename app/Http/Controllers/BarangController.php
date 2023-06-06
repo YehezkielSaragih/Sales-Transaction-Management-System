@@ -55,7 +55,7 @@ class BarangController extends Controller{
         $rangeQuery = $request->input('range_harga');
         
         // Return view
-        return view('barang.barang_table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder', 'pageSize'));
+        return view('pages.barang.table', compact('dataBarang', 'dataKategori', 'searchQuery', 'selectedKategori','rangeQueryMax','rangeQueryMin', 'sortField', 'sortOrder', 'pageSize'));
     }
 
     public function create(Request $request){
@@ -103,7 +103,7 @@ class BarangController extends Controller{
 
         // For form value
         $edit = $data->where('id_barang', $id)->first();
-        return view('barang.barang_edit', ['editId' => $id, 'edit' => $edit]);
+        return view('pages.barang.edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

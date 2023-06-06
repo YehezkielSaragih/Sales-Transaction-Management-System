@@ -44,6 +44,6 @@ class HomeController extends Controller
         $kategoriCount = Kategori::count();
 
         // Return view
-        return view('home', compact('today', 'transaksiCount', 'totalTransaksi', 'barangCount', 'kategoriCount', 'mostSoldBarang', 'mostSoldBarangToday'));
+        return view('pages.home', compact('today', 'transaksiCount', 'totalTransaksi', 'barangCount', 'kategoriCount', 'mostSoldBarang', 'mostSoldBarangToday'));
     }
 }

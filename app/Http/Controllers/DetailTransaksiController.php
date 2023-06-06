@@ -50,7 +50,7 @@ class DetailTransaksiController extends Controller
         $rangeQueryMax = $request-> input('range_harga_max');
         
         // Return view
-        return view('detail_transaksi.detail_transaksi_table', compact('data','searchQuery','rangeQueryMin','rangeQueryMax', 'sortField', 'sortOrder', 'pageSize'));
+        return view('pages.detail_transaksi.table', compact('data','searchQuery','rangeQueryMin','rangeQueryMax', 'sortField', 'sortOrder', 'pageSize'));
     }
 
     public function create(Request $request){
@@ -124,7 +124,7 @@ class DetailTransaksiController extends Controller
 
         // For form value
         $edit = $data->where('id_detail_transaksi', $id)->first();
-        return view('detail_transaksi.detail_transaksi_edit', ['editId' => $id, 'edit' => $edit]);
+        return view('pages.detail_transaksi.edit', ['editId' => $id, 'edit' => $edit]);
     }
 
     public function update(Request $request, $id){

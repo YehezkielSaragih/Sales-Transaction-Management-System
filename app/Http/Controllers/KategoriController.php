@@ -24,7 +24,7 @@ class KategoriController extends Controller{
         ]);
 
         // Return view
-        return view('kategori.kategori_table', compact('data', 'sortField', 'sortOrder', 'pageSize'));
+        return view('pages.kategori.table', compact('data', 'sortField', 'sortOrder', 'pageSize'));
     }
 
 
@@ -57,7 +57,7 @@ class KategoriController extends Controller{
 
         $data = Kategori::get();
         $edit = $data->where('id_kategori', $id)->first();
-        return view('kategori.kategori_edit', compact('edit'));
+        return view('pages.kategori.edit', compact('edit'));
     }
 
     public function update(Request $request, $id){
