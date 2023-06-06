@@ -96,88 +96,90 @@
             </form>
 
             <!-- Table -->
-            <table class="table table-bordered table-striped mt-3" id="barang">
-                <thead>
-                    <tr>
-                        <th>
-                            <div class="column-header">
-                                <div>ID Barang</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.id_barang', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'barang.id_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.id_barang', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'barang.id_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Nama Barang</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.nama_barang', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'barang.nama_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.nama_barang', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'barang.nama_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Nama Kategori</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'kategori.nama_kategori', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'kategori.nama_kategori' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'kategori.nama_kategori', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'kategori.nama_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Harga Barang</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'harga_barang', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'harga_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'harga_barang', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'harga_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>Modify</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($dataBarang as $row)
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped mt-3" id="barang">
+                    <thead>
                         <tr>
-                            <td>{{ $row['id_barang'] }}</td>
-                            <td>{{ $row['nama_barang'] }}</td>
-                            <td>{{ $row['nama_kategori'] }}</td>
-                            <td>{{ $row['harga_barang'] }}</td>
-                            <td class="d-flex">   
-                                <!-- Edit function redirect to /barang/barang_edit -->
-                                <form action="{{ route('barang.edit', $row['id_barang']) }}" method="POST" class="me-2">
-                                    @csrf
-                                    <button class="btn btn-warning">Edit</button>
-                                </form>
-                                <!-- Delete function redirect back to /barang/barang_table -->
-                                <form action="{{ route('barang.delete', $row['id_barang']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
+                            <th>
+                                <div class="column-header">
+                                    <div>ID Barang</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.id_barang', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'barang.id_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.id_barang', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'barang.id_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Nama Barang</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.nama_barang', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'barang.nama_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'barang.nama_barang', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'barang.nama_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Nama Kategori</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'kategori.nama_kategori', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'kategori.nama_kategori' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'kategori.nama_kategori', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'kategori.nama_kategori' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Harga Barang</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'harga_barang', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'harga_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('barang.index', ['sort_field' => 'harga_barang', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'harga_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>Modify</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($dataBarang as $row)
+                            <tr>
+                                <td>{{ $row['id_barang'] }}</td>
+                                <td>{{ $row['nama_barang'] }}</td>
+                                <td>{{ $row['nama_kategori'] }}</td>
+                                <td>{{ $row['harga_barang'] }}</td>
+                                <td class="d-flex">   
+                                    <!-- Edit function redirect to /barang/barang_edit -->
+                                    <form action="{{ route('barang.edit', $row['id_barang']) }}" method="POST" class="me-2">
+                                        @csrf
+                                        <button class="btn btn-warning">Edit</button>
+                                    </form>
+                                    <!-- Delete function redirect back to /barang/barang_table -->
+                                    <form action="{{ route('barang.delete', $row['id_barang']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
             <!-- Pagination -->
             <div id="barang">{{ $dataBarang->links() }}</div>

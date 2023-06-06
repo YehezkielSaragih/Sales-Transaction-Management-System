@@ -98,146 +98,149 @@
             </form>
 
             <!-- Table -->
-            <table class="table table-bordered mt-3" id="detail_transaksi">
-                <thead>
-                    <tr>
-                        <th>
-                            <div class="column-header">
-                                <div>ID Transaksi</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'id_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'id_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3" id="detail_transaksi">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="column-header">
+                                    <div>ID Transaksi</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'id_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'id_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>ID Detail Transaksi</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_detail_transaksi', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'id_detail_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_detail_transaksi', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'id_detail_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>ID Detail Transaksi</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_detail_transaksi', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'id_detail_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'id_detail_transaksi', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'id_detail_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Nama Barang</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'nama_barang', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'nama_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'nama_barang', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'nama_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Nama Barang</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'nama_barang', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'nama_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'nama_barang', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'nama_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Jumlah Barang</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'jumlah_barang', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'jumlah_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'jumlah_barang', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'jumlah_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Jumlah Barang</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'jumlah_barang', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'jumlah_barang' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'jumlah_barang', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'jumlah_barang' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Harga Barang Transaksi</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'harga_barang_transaksi', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'harga_barang_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'harga_barang_transaksi', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'harga_barang_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Harga Barang Transaksi</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'harga_barang_transaksi', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'harga_barang_transaksi' && $sortOrder === 'asc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('detail_transaksi.index', ['sort_field' => 'harga_barang_transaksi', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'harga_barang_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </th>
-                        <th>Modify</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Variable declaration -->
-                    @php
-                        $previousIdTransaksi = null;
-                        $rowspanCount = 0;
-                    @endphp
-                    <!-- Loop -->
-                    @foreach($data as $index => $row)
-                        <!-- Rowspan  -->
-                        @if($row['id_transaksi'] !== $previousIdTransaksi)
-                            <!-- Reset rowspan count -->
-                            @php
-                                $rowspanCount = 0;
-                                $nextIndex = $index;
-                                while ($nextIndex < count($data) && $data[$nextIndex]['id_transaksi'] === $row['id_transaksi']) {
-                                    $rowspanCount++;
-                                    $nextIndex++;
-                                }
-                            @endphp
-                            <!-- Print -->
-                            <tr>
-                                <td rowspan="{{ $rowspanCount }}">{{ $row['id_transaksi'] }}</td>
-                                <td>{{ $row['id_detail_transaksi'] }}</td>
-                                <td>{{ $row['nama_barang'] }}</td>
-                                <td>{{ $row['jumlah_barang'] }}</td>
-                                <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
-                                <td class="d-flex">   
-                                    <!-- Edit function redirect to /barang/barang_edit -->
-                                    <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
-                                        @csrf
-                                        <button class="btn btn-warning">Edit</button>
-                                    </form>
-                                    <!-- Delete function redirect back to /barang/barang_table -->
-                                    <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <!-- Non rowspan -->
-                        @else
-                            <!-- Print -->
-                            <tr>
-                                <td>{{ $row['id_detail_transaksi'] }}</td>
-                                <td>{{ $row['nama_barang'] }}</td>
-                                <td>{{ $row['jumlah_barang'] }}</td>
-                                <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
-                                <td class="d-flex">   
-                                    <!-- Edit function redirect to /barang/barang_edit -->
-                                    <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
-                                        @csrf
-                                        <button class="btn btn-warning">Edit</button>
-                                    </form>
-                                    <!-- Delete function redirect back to /barang/barang_table -->
-                                    <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endif
+                            </th>
+                            <th>Modify</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Variable declaration -->
                         @php
-                            $previousIdTransaksi = $row['id_transaksi'];
+                            $previousIdTransaksi = null;
+                            $rowspanCount = 0;
                         @endphp
-                    @endforeach
-                </tbody>
-            </table>
+                        <!-- Loop -->
+                        @foreach($data as $index => $row)
+                            <!-- Rowspan  -->
+                            @if($row['id_transaksi'] !== $previousIdTransaksi)
+                                <!-- Reset rowspan count -->
+                                @php
+                                    $rowspanCount = 0;
+                                    $nextIndex = $index;
+                                    while ($nextIndex < count($data) && $data[$nextIndex]['id_transaksi'] === $row['id_transaksi']) {
+                                        $rowspanCount++;
+                                        $nextIndex++;
+                                    }
+                                @endphp
+                                <!-- Print -->
+                                <tr>
+                                    <td rowspan="{{ $rowspanCount }}">{{ $row['id_transaksi'] }}</td>
+                                    <td>{{ $row['id_detail_transaksi'] }}</td>
+                                    <td>{{ $row['nama_barang'] }}</td>
+                                    <td>{{ $row['jumlah_barang'] }}</td>
+                                    <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
+                                    <td class="d-flex">   
+                                        <!-- Edit function redirect to /barang/barang_edit -->
+                                        <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
+                                            @csrf
+                                            <button class="btn btn-warning">Edit</button>
+                                        </form>
+                                        <!-- Delete function redirect back to /barang/barang_table -->
+                                        <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <!-- Non rowspan -->
+                            @else
+                                <!-- Print -->
+                                <tr>
+                                    <td>{{ $row['id_detail_transaksi'] }}</td>
+                                    <td>{{ $row['nama_barang'] }}</td>
+                                    <td>{{ $row['jumlah_barang'] }}</td>
+                                    <td>Rp {{ $row['harga_barang_transaksi'] }}</td>
+                                    <td class="d-flex">   
+                                        <!-- Edit function redirect to /barang/barang_edit -->
+                                        <form action="{{ route('detail_transaksi.edit', $row['id_detail_transaksi']) }}" method="POST" class="me-2">
+                                            @csrf
+                                            <button class="btn btn-warning">Edit</button>
+                                        </form>
+                                        <!-- Delete function redirect back to /barang/barang_table -->
+                                        <form action="{{ route('detail_transaksi.delete', $row['id_detail_transaksi']) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
+                            @php
+                                $previousIdTransaksi = $row['id_transaksi'];
+                            @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            
 
             <!-- Pagination -->
             <div id="detail_transaksi">{{ $data->links() }}</div>

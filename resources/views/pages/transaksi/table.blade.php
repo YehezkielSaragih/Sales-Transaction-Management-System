@@ -96,76 +96,78 @@
             </form>
 
             <!--Table-->
-            <table class="table table-bordered table-striped mt-3" id="transaksi">
-                <thead>
-                    <tr>
-                        <th>
-                            <div class="column-header">
-                                <div>ID Transaksi</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'id_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'id_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Tanggal</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'tanggal' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'tanggal' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="column-header">
-                                <div>Total Transaksi</div>
-                                <div>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'asc']) }}">
-                                        <i class="fa fa-arrow-up{{ $sortField === 'total_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
-                                    </a>
-                                    <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'desc']) }}">
-                                        <i class="fa fa-arrow-down{{ $sortField === 'total_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>Modify</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($data as $row)
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped mt-3" id="transaksi">
+                    <thead>
                         <tr>
-                            <td>{{ $row['id_transaksi'] }}</td>
-                            <td>{{ date('m/d/Y', strtotime($row['tanggal'])) }}</td>
-                            <td>Rp {{ $row['total_transaksi'] }}</td>
-                            <td class="d-flex">   
-                                <!-- Edit function redirect to /transaksi/transaksi_edit -->
-                                <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">
-                                    @csrf
-                                    <button class="btn btn-warning">Edit</button>
-                                </form>
-                                <!-- Delete function redirect back to /transaksi/transaksi_table -->
-                                <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
+                            <th>
+                                <div class="column-header">
+                                    <div>ID Transaksi</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'id_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'id_transaksi', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'id_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Tanggal</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'tanggal' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'tanggal', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'tanggal' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="column-header">
+                                    <div>Total Transaksi</div>
+                                    <div>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'asc']) }}">
+                                            <i class="fa fa-arrow-up{{ $sortField === 'total_transaksi' && $sortOrder === 'asc' ? ' text-primary' : '' }}"></i>
+                                        </a>
+                                        <a class="sort-link" href="{{ route('transaksi.index', ['sort_field' => 'total_transaksi', 'sort_order' => 'desc']) }}">
+                                            <i class="fa fa-arrow-down{{ $sortField === 'total_transaksi' && $sortOrder === 'desc' ? ' text-primary' : ' text-muted' }}"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>Modify</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($data as $row)
+                            <tr>
+                                <td>{{ $row['id_transaksi'] }}</td>
+                                <td>{{ date('m/d/Y', strtotime($row['tanggal'])) }}</td>
+                                <td>Rp {{ $row['total_transaksi'] }}</td>
+                                <td class="d-flex">   
+                                    <!-- Edit function redirect to /transaksi/transaksi_edit -->
+                                    <form action="{{ route('transaksi.edit', $row['id_transaksi']) }}" method="POST" class="me-2">
+                                        @csrf
+                                        <button class="btn btn-warning">Edit</button>
+                                    </form>
+                                    <!-- Delete function redirect back to /transaksi/transaksi_table -->
+                                    <form action="{{ route('transaksi.delete', $row['id_transaksi']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-             <!-- Pagination -->
+            <!-- Pagination -->
             <div id="transaksi">{{ $data->links() }}</div>
 
         </div>
