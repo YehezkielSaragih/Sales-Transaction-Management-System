@@ -96,7 +96,7 @@
             </form>
 
             <!--Table-->
-            <div class="table-responsive">
+            <div class="table-responsive me-3">
                 <table class="table table-bordered table-striped mt-3" id="transaksi">
                     <thead>
                         <tr>
