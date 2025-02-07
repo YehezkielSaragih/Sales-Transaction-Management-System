@@ -4,9 +4,11 @@ This project is a Sales Transaction Management System built with Laravel as PHP 
 
 ## 🖼️ Dashboard Preview
 <p align="center">
-  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/transaksi_preview.png" width="32%">
-  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/barang_preview.png" width="32%">
-  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/kategori_preview.png" width="32%">
+  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/transaksi_preview.png" width="100%">
+</p>
+<p align="center">
+  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/barang_preview.png" width="50%">
+  <img src="https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/kategori_preview.png" width="50%">
 </p>
 
 
