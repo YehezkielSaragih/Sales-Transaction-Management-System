@@ -3,7 +3,9 @@
 This project is a Sales Transaction Management System built with Laravel as PHP web framework and Bootstrap as frontend framework, providing an efficient and scalable solution for managing sales transactions.
 
 ## 🖼️ Dashboard Preview
-![Dashboard Preview](...)
+![Dashboard Preview](https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/transaksi_preview.png)
+![Dashboard Preview](https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/kategori_preview.png)
+![Dashboard Preview](https://github.com/YehezkielSaragih/Sales-Transaction-Management-System/blob/main/preview/barang_preview.png)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
